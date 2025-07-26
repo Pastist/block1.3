@@ -1,109 +1,72 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+@font-face {
+  font-family: "TTLakes";
+  src: url("/fonts/TTLakes-Bold.eot");
+  src: url("/fonts/TTLakes-Bold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/TTLakes-Bold.woff") format("woff"),
+    url("/fonts/TTLakes-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-
 
 @font-face {
-    font-family: 'TT Lakes Condensed';
-    src: url('fonts/TTLakesCondensed-Bold.eot');
-    src: local('fonts/TT Lakes Condensed Bold'), local('fonts/TTLakesCondensed-Bold'),
-        url('fonts/TTLakes-Medium.eot#iefix') format('embedded-opentype'),
-        url('fonts/TTLakes-Medium.woff2') format('woff2'),
-        url('fonts/TTLakes-Medium.woff') format('woff'),
-        url('fonts/TTLakesCondensed-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
+  font-family: "TTLakes";
+  src: url("/fonts/TTLakes-Regular.eot");
+  src: url("/fonts/TTLakes-Regular.eot?#iefix"), format("embedded-opentype"),
+    local("font/TT Lakes Regular"), local("font/TTLakes-Regular"),
+    url("/fonts/TTLakes-Regular.woff") format("woff"),
+    url("/fonts/TTLakes-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
 }
-
-
-@font-face {
-    font-family: 'TT Lakes';
-    src: url('fonts/TTLakes-Medium.eot');
-    src: local('fonts/TT Lakes Medium'), local('fonts/TTLakes-Medium'),
-        url('fonts/TTLakes-Medium.eot#iefix') format('embedded-opentype'),
-        url('fonts/TTLakes-Medium.woff2') format('woff2'),
-        url('fonts/TTLakes-Medium.woff') format('woff'),
-        url('fonts/TTLakes-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-}
-
 
 body{
-  font-family: TT Lakes, sans-serif;
+  font-family: 'TT Lakes', sans-serif;
+  padding: 0;
+  margin: 0 auto;
 }
 
+
+
 .wrapper{
-  min-height: 100%;
+  max-height: 88px;
+  margin: 0 auto;
   overflow: hidden;
 }
 
 
 .menuback{
-  max-width: 320px;
+  width: 100%;
   max-height: 88px;
   background-color: #ffffff;
 }
 
+.footer_menuback{
+  margin: 10px;
+}
+
+
 .cps_row{
-  padding:20px 0;
-}
-
-
-.cps_image_l{
   display: flex;
-  max-width: 320px;
-  max-height: 88px;
   flex-wrap: nowrap;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-around;
+  padding: 15px;
 }
+
+.cps_image_left{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  flex-grow: 1;
+}
+
+.cps_image_rigt{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  flex-grow: 1;
+}
+
 
 
 .shadov_row{
@@ -111,20 +74,17 @@ body{
   Width: 320px;
   Height: 1px;
   Top: 87px;
-  background: #080b0a;
+  background:#D9FFF5;
 }
 
 
 .service_title{
   color: #1B1C21;
-  font-family: TT Lakes, sans-serif;
+  font-family: 'TT Lakes', sans-serif;
   font-weight: 700;
   font-size: 28px;
   line-height: 40px;
   letter-spacing: -0.6px;
-
-
-
 }
 
 .services_row{
@@ -139,5 +99,49 @@ body{
 
 .services_image{
   flex: 0 0 4px;
+}
+
+.main{
+  background: #F8F8F8;
+  width: 100%;
+  height: 100%;
+}
+
+.slidemenu{
+  display: flex;
+  width: 504px;
+  height: 40px;
+  align-items: center;
+  list-style-type: none;
+  white-space: nowrap;
+  font-family: "TT Lakes", sans-serif;
+}
+
+.slidemenu > li{
+  margin-right: 20px;
+  justify-content: space-between;
+
+}
+
+.slidemenu > li > a{
+  color: #7E7E82;
+  text-decoration-line: none;
+}
+
+
+.slidemenu > li > input[value="text"]{
+  text-shadow: #7E7E82;
+}
+
+
+.slidemenu > li > input[type=button]{
+  border: 2px solid #B8FFEC;
+  background: #ffffff;
+  font-family: 'TT Lakes', sans-serif;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 6px 16px;
+  color: #7E7E82;
 }
 
