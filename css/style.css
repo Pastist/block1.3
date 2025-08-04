@@ -24,7 +24,8 @@ body{
   font-family: 'TT Lakes', sans-serif;
   padding: 0;
   margin: 0 auto;
-  height: 597px;
+  height: 750px;
+  overflow: hidden;
 }
 
 
@@ -32,7 +33,6 @@ body{
 .wrapper{
   max-height: 88px;
   margin: 0 auto;
-  overflow: hidden;
 }
 
 
@@ -105,22 +105,23 @@ body{
 .main{
   background: #F8F8F8;
   width: 100%;
-  height: 509px;
+  height: 100%;
 }
 
 .slidemenu{
   display: flex;
-
+  overflow: auto;
   width: 504px;
-  height: 40px;
+  /*height: 40px;*/
   align-items: center;
   list-style-type: none;
   white-space: nowrap;
   font-family: "TT Lakes", sans-serif;
+  
 }
 
 .slidemenu > li{
-  margin-right: 20px;
+  /*margin-right: 20px;*/
   justify-content: space-between;
 
 }
@@ -151,15 +152,12 @@ body{
 .content_text{
   display: flex;
   margin: 16px;
-}
-
-.content_text{
   font-family: 'TT Lakes', sans-serif;
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 14px;
   line-height: 20px;
-  letter-spacing: 0.3px;
-  font-family: lighter;
-  overflow: hidden;
+  letter-spacing: 0.4px;
+
 }
 
 
@@ -270,8 +268,9 @@ body{
 
  .content{
   display: flex;
-  flex-direction: row;
-  flex-grow: 0;
+  justify-content: space-between;
+  /*flex-direction: row;*/
+  /*flex-grow: 0;*/
   padding: 10px;
  }
 
@@ -288,6 +287,7 @@ body{
   color: #1B1C21;
   width: 312px;
   height: 160px;
+  overflow: hidden;
  }
 
  .content_logo{
@@ -295,7 +295,7 @@ body{
   justify-content: flex-end;
   height: 208px;
  }
-
+ 
 }
 
 .header_conteiner{
@@ -324,7 +324,6 @@ body{
  .menu_left{
   display: block;
  }
- 
  .text3{
   display: block;
 
@@ -368,7 +367,7 @@ body{
  .slidemenu{
   display: flex;
   flex-wrap: wrap;
-  align-content: flex-start;
+  align-content: flex-start, center;
   width: 1063px;
   height: 82px;
   padding: 0 0 0 35px;
@@ -381,7 +380,7 @@ body{
 
   width: 490px;
   height: 160px;
-  line-height: 18px;
+  font-size: 13px;
   gap: 0;
  }
  .content_logo{
