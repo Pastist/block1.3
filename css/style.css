@@ -196,7 +196,6 @@ body{
 .wrapper{
   max-height: 88px;
   margin: 0 auto;
-  overflow: hidden;
 }
 
 
@@ -222,6 +221,7 @@ body{
 .cps_image_left{
   display: flex;
   flex-wrap: nowrap;
+  align-items: center;
   justify-content: space-around;
   flex-grow: 1;
 }
@@ -231,6 +231,7 @@ body{
 .cps_image_rigt{
   display: flex;
   flex-wrap: nowrap;
+  align-items: center;
   justify-content: space-around;
   flex-grow: 1;
 }
@@ -274,13 +275,14 @@ body{
 
 .slidemenu{
   display: flex;
-
-  width: 504px;
-  height: 40px;
+  overflow: auto;
+  /*width: 504px;*/
+  /*height: 40px;*/
   align-items: center;
   list-style-type: none;
   white-space: nowrap;
   font-family: "TT Lakes", sans-serif;
+  
 }
 
 .slidemenu > li{
@@ -315,15 +317,12 @@ body{
 .content_text{
   display: flex;
   margin: 16px;
-}
-
-.content_text{
   font-family: 'TT Lakes', sans-serif;
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 14px;
   line-height: 20px;
-  letter-spacing: 0.3px;
-  font-family: lighter;
-  overflow: hidden;
+  letter-spacing: 0.4px;
+
 }
 
 
@@ -424,8 +423,8 @@ body{
 
  .slidemenu{
   display: flex;
-  width: 776px;
-  gap: 20px;
+  /*width: 776px;*/
+  gap: 25px 0;
   padding: 15px;
   }
  .text2{
@@ -434,8 +433,9 @@ body{
 
  .content{
   display: flex;
-  flex-direction: row;
-  flex-grow: 0;
+  justify-content: space-between;
+  /*flex-direction: row;*/
+  /*flex-grow: 0;*/
   padding: 10px;
  }
 
@@ -452,6 +452,7 @@ body{
   color: #1B1C21;
   width: 312px;
   height: 160px;
+  overflow: hidden;
  }
 
  .content_logo{
@@ -459,7 +460,7 @@ body{
   justify-content: flex-end;
   height: 208px;
  }
-
+ 
 }
 
 .header_conteiner{
@@ -474,7 +475,7 @@ body{
 }
 
 
-@media (max-width: 1120px) {
+@media (max-width: 1119px) {
 
  .header_conteiner{
   display: block; 
@@ -484,11 +485,10 @@ body{
  display: block;
 }
 
-@media (min-width: 1120px) {
+@media (min-width: 1119px) {
  .menu_left{
   display: block;
  }
- 
  .text3{
   display: block;
 
@@ -531,8 +531,8 @@ body{
  .slidemenu{
   display: flex;
   flex-wrap: wrap;
-  align-content: flex-start;
-  width: 1063px;
+  align-content: flex-start, center;
+  /*width: 1063px;*/
   height: 82px;
   padding: 0 0 0 35px;
   margin: 0;
@@ -544,7 +544,7 @@ body{
 
   width: 490px;
   height: 160px;
-  line-height: 18px;
+  font-size: 13px;
   gap: 0;
  }
  .content_logo{
