@@ -244,6 +244,11 @@ body{
   background:#D9FFF5;
 }
 
+.shadov_row2 {
+  display: flex;
+  Height: 1px;
+  background: #D9FFF5;
+}
 
 .service_title{
   color: #1B1C21;
@@ -338,6 +343,7 @@ body{
 .content_logo{
   width: 100%;
   height: 100%;
+  padding-bottom: 5px;
 }
 
 .content_logo > img{
@@ -345,8 +351,6 @@ body{
   max-width: 100%;
 
 }
-
-
 
 .read-more_text{
   font-family: 'TT Lakes', sans-serif;
@@ -359,6 +363,58 @@ body{
   height: 24px;
 }
 
+.three{
+  width: 100%;
+  height: 234px;
+  background: #F8F8F8;
+}
+.cap{
+  list-style: none;
+  font-family: "TT Lakes", sans-serif ;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
+  background: linear-gradient(270deg,
+   #F8F8F8 0%, #FFFFFF 98.61%);
+  width: 320px;
+  height: 48px;
+  padding: 16px;
+  margin-top: 1px;
+
+}
+
+.cap > a{
+  color: #7E7E82;
+
+}
+.brands{
+  display: flex;
+  padding: 16px 0 16px 16px;
+  gap: 16px;
+}
+.oval{
+
+  width: 204px;
+  height: 12px;
+  /*padding-left: 30px;*/
+  /*position: absolute;
+  text-align: center;*/
+  
+}
+.oval_item{
+  display: inline-block;
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: #DDDDDD;
+  border-radius: 50%;
+  column-gap: 4px;
+  /*position: absolute;
+  text-align: center;
+  */
+}
 
 .two{
   display: none;
