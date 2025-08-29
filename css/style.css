@@ -425,12 +425,18 @@
   display: flex;
   padding: 16px 0 16px 16px;
   gap: 16px;
+  cursor: pointer;
 }
 .brands_services{
   width: 240px;
   height: 72px;
 }
-
+.element.stail{
+  width: 240px;
+ }
+.swiper-slide{
+  flex-shrink: 1;
+ }
 .oval{
   text-align: center;
   position: static;
@@ -564,11 +570,11 @@
   justify-content: center;
   box-sizing: content-box;
   width: 100%;
-  height: 165px;
+  height: 160px;
   overflow: hidden;
   flex-wrap: wrap;
   padding-top: 16px;
-  padding-left: 0;
+  padding-left: 16px;
  }
 
 }
