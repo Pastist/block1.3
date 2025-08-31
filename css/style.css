@@ -395,11 +395,11 @@
 
 .three{
   width: 100%;
-  height: 234px;
+  height: 195px;
   background: #F8F8F8;
 
 }
-.cap{
+.header_cap{
   box-sizing: border-box;
   list-style: none;
   font-family: "TT Lakes", sans-serif ;
@@ -426,11 +426,14 @@
   padding: 16px 0 16px 16px;
   gap: 16px;
   cursor: pointer;
+  height: auto;
+  background: #F8F8F8;
 }
 .brands_services{
   width: 240px;
   height: 72px;
 }
+
 .element.stail{
   width: 240px;
  }
@@ -452,7 +455,7 @@
   position: static;
 }
 
-.show-more_icon{
+.open_icon{
   display: none;
 }
 .two{
@@ -496,10 +499,11 @@
 .oval{
   display: none;
  }
- .show-more_icon{
+ /*.show-more_icon{
   display: block;
   padding-left: 20px;
-}
+  background: #F8F8F8;
+}*/
  .body{
   font-family: 'TT Lakes', sans-serif;
   padding: 0;
@@ -576,7 +580,41 @@
   padding-top: 16px;
   padding-left: 16px;
  }
-
+ 
+ .brands_opened{
+  display: flex;
+  justify-content: center;
+  box-sizing: content-box;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  flex-wrap: wrap;
+  padding-top: 16px;
+  padding-left: 16px;
+  /*background: #F8F8F8;*/
+  }
+ .open_icon{
+  display: block;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding-left: 24px;
+    width: 150px;
+    height: 20px;
+    border: none;
+ }
+ .open_icon_text{
+  font-family: 'TTLakes', sans-serif;
+    color: #1b1c21;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-wrap: nowrap;
+    padding-left: 40px;
+    background-image: url(/icon/openexpand.svg);
+    background-repeat: no-repeat;
+    background-position: 0 -1px;
+ }
 }
 
 .ewer{
