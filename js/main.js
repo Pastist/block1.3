@@ -8,37 +8,33 @@ const swiper = new Swiper('.swiper', {
   //    slidesOffsetAfter: 16,
   //    centeredSlidesBounds: true,
   pagination: {
-  el: ".swiper-pagination",
-  clickable: true,
+    el: ".swiper-pagination",
+    clickable: true,
   },
 });
-//const myDiv = document.getElementById('show-more_ikon');
-//const toggleButton = document.getElementById('open-icon');
 
-//  toggleButton.addEventListener('click', function() {
-//      if (myDiv.style.display === 'none') {
-//        myDiv.style.display = 'block';
-//        toggleButton.textContent = 'Скрыть';
-//      } else {
-//        myDiv.style.display = 'none';
-//        toggleButton.textContent = 'Показать';
-//      }
-//    });
 
-const iconbutton = document.getElementById("iconbutton");
-const toggleText = iconbutton.querySelector(".open_icon_text");
-const mainImg = document.querySelector(".main-img");
-const gridItems = document.querySelectorAll(".swiper-slide");
-btn.addEventListener("click", btnClick);
 
-function btnClick() {
-    console.log(content.classList);
-
-    if (content.classList.contains("hidden")) {
-        btn.textContent = "Скрыть элемент";
-    } else {
-        btn.textContent = "Показать элемент";
-    }
-
-    content.classList.toggle("hidden");
-}
+const toggleButton = document.getElementById("iconButton");
+const toggleText = toggleButton.querySelector(".open_icon_text");
+const mainImg = document.querySelector(".open_img");
+const slideToggle = document.querySelectorAll(".brands_services");
+let isExpanded = false;
+toggleButton.addEventListener("click", () => {
+  if (isExpanded) {
+    slideToggle.forEach((item, index) => {
+      if (window.innerWidth >= 1010) {
+        if (index >= 8) item.classList.add("hidden");
+      } else if (window.innerWidth >= 768) {
+        if (index >= 6) item.classList.add("hidden");
+      }
+    });
+    toggleText.textContent = "Показать всё";
+    mainImg.classList.remove("rotated");
+  } else {
+    slideToggle.forEach(item => item.classList.remove("hidden"));
+    toggleText.textContent = "Скрыть";
+    mainImg.classList.add("rotated");
+  }
+  isExpanded = !isExpanded;
+});
