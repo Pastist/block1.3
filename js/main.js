@@ -1,15 +1,10 @@
 const swiper = new Swiper('.swiper', {
   slidesPerView: 'auto',
   spaceBetween: 0,
-
-  //slidesPerView: 1.3,
-  //spaceBetween: 32,
-  //slidesOffsetBefore: 16,
-  //    slidesOffsetAfter: 16,
-  //    centeredSlidesBounds: true,
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
+    
   },
 });
 
@@ -23,7 +18,7 @@ toggleButton.addEventListener("click", () => {
     slideToggle.forEach((item, index) => {
       if (window.innerWidth >= 1010) {
         if (index >= 8) item.classList.add("hidden");
-      } else if (window.innerWidth >= 768) {
+      } else if (window.innerWidth >= 766) {
         if (index >= 6) item.classList.add("hidden");
       }
     });
@@ -37,6 +32,46 @@ toggleButton.addEventListener("click", () => {
   isExpanded = !isExpanded;
 });
 
+let reloaded_once = sessionStorage.getItem("reloaded_once");
+if (!reloaded_once) {
+  window.addEventListener("resize", function _reloader() {
+    if (window.innerWidth <= 766) {
+      window.location.reload();
+
+      sessionStorage.setItem("reloaded_once", "true");
+    }
+    if (window.innerWidth <= 1010) {
+      window.location.reload();
+
+      sessionStorage.setItem("reloaded_once", "true");
+    }
+  }, { once: true });
+}
+
+//const toggleButton = document.getElementById("iconButton");
+//const toggleText = toggleButton.querySelector(".open_icon_text");
+//const mainImg = document.querySelector(".open_img");
+//const slideToggle = document.querySelectorAll(".repair_services");
+//let isExpanded = false;
+//toggleButton.addEventListener("click", () => {
+//  if (isExpanded) {
+//    slideToggle.forEach((item, index) => {
+//      //if (window.innerWidth >= 1010) {
+//      //  if (index >= 8) item.classList.add("hidden");
+//      //} else 
+//        if (window.innerWidth >= 768) {
+//        if (index >= 2) item.classList.add("hidden");
+//      }
+//    });
+//    toggleText.textContent = "Показать всё";
+//    mainImg.classList.remove("rotated");
+//  } else {
+//    slideToggle.forEach(item => item.classList.remove("hidden"));
+//    toggleText.textContent = "Скрыть";
+//    mainImg.classList.add("rotated");
+//  }
+//  isExpanded = !isExpanded;
+//});
 //const toggleButton = document.getElementById("iconButton");
 //const toggleText = toggleButton.querySelector(".open_icon_text");
 //const mainImg = document.querySelector(".open_img");
