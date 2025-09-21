@@ -38,7 +38,7 @@ if (!reloaded_once) {
     if (window.innerWidth <= 766) {
       window.location.reload();
 
-      sessionStorage.setItem("reloaded_once", "true");
+      sessionStorage.setItem("reloaded_once", "true"); eslint--init;
     }
     if (window.innerWidth <= 1010) {
       window.location.reload();
