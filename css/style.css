@@ -604,7 +604,6 @@
     gap: 0;
   }
 }
-
 .prices_list {
   display: flex;
   justify-content: space-around;
@@ -618,6 +617,7 @@
   border: 1px solid #eaeaea;
   flex-shrink: 0;
   padding-bottom: 16px;
+  
 }
 
 @media (min-width: 768px) {
@@ -675,6 +675,7 @@
   letter-spacing: 0px;
   padding-left: 16px;
   padding-top: 16px;
+  margin: 0;
 }
 
 @media (min-width: 768px) {
@@ -691,6 +692,7 @@
   line-height: 20px;
   letter-spacing: 0.2px;
   padding-left: 16px;
+  margin: 0;
 }
 
 .up {
