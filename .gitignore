@@ -1,1 +1,14 @@
+<<<<<<< HEAD
 node_modules
+=======
+# Node.js
+node_modules/
+package-lock.json
+
+
+# VS Code
+.vscode/
+
+# Webpack build output
+dist/
+>>>>>>> 44b95bdaaa18a9ad3ff321811e929aa82778bc46
