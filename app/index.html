@@ -1,0 +1,177 @@
+<head><script defer="defer" src="./js/main.d8add3ea80b1565333f1.js"></script></head>Html Webpack Plugin:<pre>
+  Error: Child compilation failed:
+  Module build failed (from ../node_modules/mini-css-extract-plugin/dist/loader.js):
+  ValidationError: Invalid options object. Mini CSS Extract Plugin Loader has been initialized using an options object that does not match the   API schema.
+   - options has an unknown property 'hmr'. These properties are valid:
+     object { publicPath?, emit?, esModule?, layer?, defaultExport? }
+      at validate (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\node_modules\schema-utils\dist\validate.js:213:11)
+      at Object.getOptions (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:721:19)
+      at Object.pitch (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\mini-css-extract-plugin\dist\loader.js:85:24)
+  ModuleBuildError: Module build failed (from ../node_modules/mini-css-extract-plugin/dist/loader.js):
+  ValidationError: Invalid options object. Mini CSS Extract Plugin Loader has been initialized using an options object that does not match the   API schema.
+   - options has an unknown property 'hmr'. These properties are valid:
+     object { publicPath?, emit?, esModule?, layer?, defaultExport? }
+      at validate (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\node_modules\schema-utils\dist\validate.js:213:11)
+      at Object.getOptions (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:721:19)
+      at Object.pitch (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\mini-css-extract-plugin\dist\loader.js:85:24)
+      at processResult (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:936:19)
+      at C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:1137:5
+      at C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+      at C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\LoaderRunner.js:195:20
+      at runSyncOrAsync (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\LoaderRunner.js:156:3)
+      at C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\LoaderRunner.js:191:3
+      at handleResult (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\loadLoader.js:53:2)
+      at loadLoader (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\loadLoader.js:35:10)
+      at iteratePitchingLoaders (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\LoaderRunner.js:182:2)
+      at runLoaders (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+      at NormalModule._doBuild (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:1014:3)
+      at NormalModule.build (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:1252:15)
+      at C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\Compilation.js:1556:12
+      at NormalModule.needBuild (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:1589:32)
+      at Compilation._buildModule (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\Compilation.js:1537:10)
+      at C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\util\AsyncQueue.js:341:10
+      at Hook.eval [as callAsync] (eval at create (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\tapable\lib\HookCodeFactory.js:31:10)  , <anonymous>:6:1)
+      at AsyncQueue._startProcessing (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\util\AsyncQueue.js:331:26)
+      at AsyncQueue._ensureProcessing (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\util\AsyncQueue.js:318:12)
+      at process.processImmediate (node:internal/timers:505:21)
+  
+  - validate.js:213 validate
+    [block1.3]/[webpack]/[schema-utils]/dist/validate.js:213:11
+  
+  - NormalModule.js:721 Object.getOptions
+    [block1.3]/[webpack]/lib/NormalModule.js:721:19
+  
+  - loader.js:85 Object.pitch
+    [block1.3]/[mini-css-extract-plugin]/dist/loader.js:85:24
+  
+  - ModuleBuildError: Module build failed (from ../node_modules/mini-css-extract-plugin/dist/loader.js):
+  
+  - ValidationError: Invalid options object. Mini CSS Extract Plugin Loader has been initialized using an options object that does not match t    he API schema.
+  
+  - - options has an unknown property 'hmr'. These properties are valid:
+  
+  - object { publicPath?, emit?, esModule?, layer?, defaultExport? }
+  
+  - validate.js:213 validate
+    [block1.3]/[webpack]/[schema-utils]/dist/validate.js:213:11
+  
+  - NormalModule.js:721 Object.getOptions
+    [block1.3]/[webpack]/lib/NormalModule.js:721:19
+  
+  - loader.js:85 Object.pitch
+    [block1.3]/[mini-css-extract-plugin]/dist/loader.js:85:24
+  
+  - NormalModule.js:936 processResult
+    [block1.3]/[webpack]/lib/NormalModule.js:936:19
+  
+  - NormalModule.js:1137 
+    [block1.3]/[webpack]/lib/NormalModule.js:1137:5
+  
+  - LoaderRunner.js:400 
+    [block1.3]/[loader-runner]/lib/LoaderRunner.js:400:11
+  
+  - LoaderRunner.js:195 
+    [block1.3]/[loader-runner]/lib/LoaderRunner.js:195:20
+  
+  - LoaderRunner.js:156 runSyncOrAsync
+    [block1.3]/[loader-runner]/lib/LoaderRunner.js:156:3
+  
+  - LoaderRunner.js:191 
+    [block1.3]/[loader-runner]/lib/LoaderRunner.js:191:3
+  
+  - loadLoader.js:53 handleResult
+    [block1.3]/[loader-runner]/lib/loadLoader.js:53:2
+  
+  - loadLoader.js:35 loadLoader
+    [block1.3]/[loader-runner]/lib/loadLoader.js:35:10
+  
+  - LoaderRunner.js:182 iteratePitchingLoaders
+    [block1.3]/[loader-runner]/lib/LoaderRunner.js:182:2
+  
+  - LoaderRunner.js:398 runLoaders
+    [block1.3]/[loader-runner]/lib/LoaderRunner.js:398:2
+  
+  - NormalModule.js:1014 NormalModule._doBuild
+    [block1.3]/[webpack]/lib/NormalModule.js:1014:3
+  
+  - NormalModule.js:1252 NormalModule.build
+    [block1.3]/[webpack]/lib/NormalModule.js:1252:15
+  
+  - Compilation.js:1556 
+    [block1.3]/[webpack]/lib/Compilation.js:1556:12
+  
+  - NormalModule.js:1589 NormalModule.needBuild
+    [block1.3]/[webpack]/lib/NormalModule.js:1589:32
+  
+  - Compilation.js:1537 Compilation._buildModule
+    [block1.3]/[webpack]/lib/Compilation.js:1537:10
+  
+  - AsyncQueue.js:341 
+    [block1.3]/[webpack]/lib/util/AsyncQueue.js:341:10
+  
+  
+  - AsyncQueue.js:331 AsyncQueue._startProcessing
+    [block1.3]/[webpack]/lib/util/AsyncQueue.js:331:26
+  
+  - AsyncQueue.js:318 AsyncQueue._ensureProcessing
+    [block1.3]/[webpack]/lib/util/AsyncQueue.js:318:12
+  
+  - timers:505 process.processImmediate
+    node:internal/timers:505:21
+  
+  - child-compiler.js:211 
+    [block1.3]/[html-webpack-plugin]/lib/child-compiler.js:211:18
+  
+  - Compiler.js:648 finalCallback
+    [block1.3]/[webpack]/lib/Compiler.js:648:5
+  
+  - Compiler.js:684 
+    [block1.3]/[webpack]/lib/Compiler.js:684:11
+  
+  - Compiler.js:1378 
+    [block1.3]/[webpack]/lib/Compiler.js:1378:17
+  
+  
+  - Hook.js:21 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
+    [block1.3]/[tapable]/lib/Hook.js:21:14
+  
+  - Compiler.js:1374 
+    [block1.3]/[webpack]/lib/Compiler.js:1374:33
+  
+  - Compilation.js:3133 finalCallback
+    [block1.3]/[webpack]/lib/Compilation.js:3133:11
+  
+  - Compilation.js:3469 
+    [block1.3]/[webpack]/lib/Compilation.js:3469:11
+  
+  
+  - Hook.js:21 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
+    [block1.3]/[tapable]/lib/Hook.js:21:14
+  
+  - Compilation.js:3462 
+    [block1.3]/[webpack]/lib/Compilation.js:3462:38
+  
+  
+  - Compilation.js:585 fn
+    [block1.3]/[webpack]/lib/Compilation.js:585:9
+  
+  
+  - Hook.js:21 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
+    [block1.3]/[tapable]/lib/Hook.js:21:14
+  
+  - Compilation.js:3426 cont
+    [block1.3]/[webpack]/lib/Compilation.js:3426:34
+  
+  - Compilation.js:3482 
+    [block1.3]/[webpack]/lib/Compilation.js:3482:10
+  
+  - async.js:3485 symbolIterator
+    [block1.3]/[neo-async]/async.js:3485:9
+  
+  - async.js:3527 done
+    [block1.3]/[neo-async]/async.js:3527:9
+  
+  - async.js:2830 
+    [block1.3]/[neo-async]/async.js:2830:7
+  
+</anonymous></pre>

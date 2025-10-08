@@ -1,26 +1,26 @@
-
-
-
-const swiper = new Swiper('.swiper', {
+/******/ (() => { // webpackBootstrap
+/*!********************!*\
+  !*** ./js/main.js ***!
+  \********************/
+var swiper = new Swiper('.swiper', {
   slidesPerView: 'auto',
   spaceBetween: 0,
   pagination: {
     el: ".swiper-pagination",
-    clickable: true,
-  }, });
-  function destroySwiper() {
-  if(currentInstance) {
-    currentInstance.destroy(true, true);
-    sliderInstances.delete(selector);
-    currentInstance = null;
+    clickable: true
   }
-
-    const slides = sliderElement.querySelectorAll(".swiper-pagination");
-  slides.forEach((slide) => {
-    slide.style.width = "";
- 
-}
 });
+//  function destroySwiper() {
+//  if(currentInstance) {
+//    currentInstance.destroy(true, true);
+//    sliderInstances.delete(selector);
+//    currentInstance = null;
+//  }
+//    const slides = sliderElement.querySelectorAll(".swiper-pagination");
+//  slides.forEach((slide) => {
+//    slide.style.width = "";
+//  }
+//});
 
 //function handleResize() {
 //    if (window.innerWidth <= 768) { // 768px - это пример порога ширины окна, при котором свайпер отключается
@@ -43,18 +43,14 @@ const swiper = new Swiper('.swiper', {
 //// Первый запуск при загрузке страницы
 //handleResize();
 
-
-
-
-
-const toggleButton = document.getElementById("iconButton");
-const toggleText = toggleButton.querySelector(".open_icon_text");
-const mainImg = document.querySelector(".open_img");
-const slideToggle = document.querySelectorAll(".brands_services");
-let isExpanded = false;
-toggleButton.addEventListener("click", () => {
+var toggleButton = document.getElementById("iconButton");
+var toggleText = toggleButton.querySelector(".open_icon_text");
+var mainImg = document.querySelector(".open_img");
+var slideToggle = document.querySelectorAll(".brands_services");
+var isExpanded = false;
+toggleButton.addEventListener("click", function () {
   if (isExpanded) {
-    slideToggle.forEach((item, index) => {
+    slideToggle.forEach(function (item, index) {
       if (window.innerWidth >= 1010) {
         if (index >= 8) item.classList.add("hidden");
       } else if (window.innerWidth >= 766) {
@@ -64,9 +60,13 @@ toggleButton.addEventListener("click", () => {
     toggleText.textContent = "Показать всё";
     mainImg.classList.remove("rotated");
   } else {
-    slideToggle.forEach(item => item.classList.remove("hidden"));
+    slideToggle.forEach(function (item) {
+      return item.classList.remove("hidden");
+    });
     toggleText.textContent = "Скрыть";
     mainImg.classList.add("rotated");
   }
   isExpanded = !isExpanded;
 });
+/******/ })()
+;
