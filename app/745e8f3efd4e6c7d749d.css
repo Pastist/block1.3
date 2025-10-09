@@ -1,7 +1,0 @@
-Module build failed (from ../node_modules/mini-css-extract-plugin/dist/loader.js):
-ValidationError: Invalid options object. Mini CSS Extract Plugin Loader has been initialized using an options object that does not match the API schema.
- - options has an unknown property 'hmr'. These properties are valid:
-   object { publicPath?, emit?, esModule?, layer?, defaultExport? }
-    at validate (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\node_modules\schema-utils\dist\validate.js:213:11)
-    at Object.getOptions (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:721:19)
-    at Object.pitch (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\mini-css-extract-plugin\dist\loader.js:85:24)

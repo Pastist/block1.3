@@ -1,177 +1,436 @@
-<head><script defer="defer" src="./js/main.d8add3ea80b1565333f1.js"></script></head>Html Webpack Plugin:<pre>
-  Error: Child compilation failed:
-  Module build failed (from ../node_modules/mini-css-extract-plugin/dist/loader.js):
-  ValidationError: Invalid options object. Mini CSS Extract Plugin Loader has been initialized using an options object that does not match the   API schema.
-   - options has an unknown property 'hmr'. These properties are valid:
-     object { publicPath?, emit?, esModule?, layer?, defaultExport? }
-      at validate (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\node_modules\schema-utils\dist\validate.js:213:11)
-      at Object.getOptions (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:721:19)
-      at Object.pitch (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\mini-css-extract-plugin\dist\loader.js:85:24)
-  ModuleBuildError: Module build failed (from ../node_modules/mini-css-extract-plugin/dist/loader.js):
-  ValidationError: Invalid options object. Mini CSS Extract Plugin Loader has been initialized using an options object that does not match the   API schema.
-   - options has an unknown property 'hmr'. These properties are valid:
-     object { publicPath?, emit?, esModule?, layer?, defaultExport? }
-      at validate (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\node_modules\schema-utils\dist\validate.js:213:11)
-      at Object.getOptions (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:721:19)
-      at Object.pitch (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\mini-css-extract-plugin\dist\loader.js:85:24)
-      at processResult (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:936:19)
-      at C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:1137:5
-      at C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\LoaderRunner.js:400:11
-      at C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\LoaderRunner.js:195:20
-      at runSyncOrAsync (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\LoaderRunner.js:156:3)
-      at C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\LoaderRunner.js:191:3
-      at handleResult (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\loadLoader.js:53:2)
-      at loadLoader (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\loadLoader.js:35:10)
-      at iteratePitchingLoaders (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\LoaderRunner.js:182:2)
-      at runLoaders (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
-      at NormalModule._doBuild (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:1014:3)
-      at NormalModule.build (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:1252:15)
-      at C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\Compilation.js:1556:12
-      at NormalModule.needBuild (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\NormalModule.js:1589:32)
-      at Compilation._buildModule (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\Compilation.js:1537:10)
-      at C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\util\AsyncQueue.js:341:10
-      at Hook.eval [as callAsync] (eval at create (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\tapable\lib\HookCodeFactory.js:31:10)  , <anonymous>:6:1)
-      at AsyncQueue._startProcessing (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\util\AsyncQueue.js:331:26)
-      at AsyncQueue._ensureProcessing (C:\Users\pasti\Documents\GitHub\block1.3\node_modules\webpack\lib\util\AsyncQueue.js:318:12)
-      at process.processImmediate (node:internal/timers:505:21)
-  
-  - validate.js:213 validate
-    [block1.3]/[webpack]/[schema-utils]/dist/validate.js:213:11
-  
-  - NormalModule.js:721 Object.getOptions
-    [block1.3]/[webpack]/lib/NormalModule.js:721:19
-  
-  - loader.js:85 Object.pitch
-    [block1.3]/[mini-css-extract-plugin]/dist/loader.js:85:24
-  
-  - ModuleBuildError: Module build failed (from ../node_modules/mini-css-extract-plugin/dist/loader.js):
-  
-  - ValidationError: Invalid options object. Mini CSS Extract Plugin Loader has been initialized using an options object that does not match t    he API schema.
-  
-  - - options has an unknown property 'hmr'. These properties are valid:
-  
-  - object { publicPath?, emit?, esModule?, layer?, defaultExport? }
-  
-  - validate.js:213 validate
-    [block1.3]/[webpack]/[schema-utils]/dist/validate.js:213:11
-  
-  - NormalModule.js:721 Object.getOptions
-    [block1.3]/[webpack]/lib/NormalModule.js:721:19
-  
-  - loader.js:85 Object.pitch
-    [block1.3]/[mini-css-extract-plugin]/dist/loader.js:85:24
-  
-  - NormalModule.js:936 processResult
-    [block1.3]/[webpack]/lib/NormalModule.js:936:19
-  
-  - NormalModule.js:1137 
-    [block1.3]/[webpack]/lib/NormalModule.js:1137:5
-  
-  - LoaderRunner.js:400 
-    [block1.3]/[loader-runner]/lib/LoaderRunner.js:400:11
-  
-  - LoaderRunner.js:195 
-    [block1.3]/[loader-runner]/lib/LoaderRunner.js:195:20
-  
-  - LoaderRunner.js:156 runSyncOrAsync
-    [block1.3]/[loader-runner]/lib/LoaderRunner.js:156:3
-  
-  - LoaderRunner.js:191 
-    [block1.3]/[loader-runner]/lib/LoaderRunner.js:191:3
-  
-  - loadLoader.js:53 handleResult
-    [block1.3]/[loader-runner]/lib/loadLoader.js:53:2
-  
-  - loadLoader.js:35 loadLoader
-    [block1.3]/[loader-runner]/lib/loadLoader.js:35:10
-  
-  - LoaderRunner.js:182 iteratePitchingLoaders
-    [block1.3]/[loader-runner]/lib/LoaderRunner.js:182:2
-  
-  - LoaderRunner.js:398 runLoaders
-    [block1.3]/[loader-runner]/lib/LoaderRunner.js:398:2
-  
-  - NormalModule.js:1014 NormalModule._doBuild
-    [block1.3]/[webpack]/lib/NormalModule.js:1014:3
-  
-  - NormalModule.js:1252 NormalModule.build
-    [block1.3]/[webpack]/lib/NormalModule.js:1252:15
-  
-  - Compilation.js:1556 
-    [block1.3]/[webpack]/lib/Compilation.js:1556:12
-  
-  - NormalModule.js:1589 NormalModule.needBuild
-    [block1.3]/[webpack]/lib/NormalModule.js:1589:32
-  
-  - Compilation.js:1537 Compilation._buildModule
-    [block1.3]/[webpack]/lib/Compilation.js:1537:10
-  
-  - AsyncQueue.js:341 
-    [block1.3]/[webpack]/lib/util/AsyncQueue.js:341:10
-  
-  
-  - AsyncQueue.js:331 AsyncQueue._startProcessing
-    [block1.3]/[webpack]/lib/util/AsyncQueue.js:331:26
-  
-  - AsyncQueue.js:318 AsyncQueue._ensureProcessing
-    [block1.3]/[webpack]/lib/util/AsyncQueue.js:318:12
-  
-  - timers:505 process.processImmediate
-    node:internal/timers:505:21
-  
-  - child-compiler.js:211 
-    [block1.3]/[html-webpack-plugin]/lib/child-compiler.js:211:18
-  
-  - Compiler.js:648 finalCallback
-    [block1.3]/[webpack]/lib/Compiler.js:648:5
-  
-  - Compiler.js:684 
-    [block1.3]/[webpack]/lib/Compiler.js:684:11
-  
-  - Compiler.js:1378 
-    [block1.3]/[webpack]/lib/Compiler.js:1378:17
-  
-  
-  - Hook.js:21 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
-    [block1.3]/[tapable]/lib/Hook.js:21:14
-  
-  - Compiler.js:1374 
-    [block1.3]/[webpack]/lib/Compiler.js:1374:33
-  
-  - Compilation.js:3133 finalCallback
-    [block1.3]/[webpack]/lib/Compilation.js:3133:11
-  
-  - Compilation.js:3469 
-    [block1.3]/[webpack]/lib/Compilation.js:3469:11
-  
-  
-  - Hook.js:21 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
-    [block1.3]/[tapable]/lib/Hook.js:21:14
-  
-  - Compilation.js:3462 
-    [block1.3]/[webpack]/lib/Compilation.js:3462:38
-  
-  
-  - Compilation.js:585 fn
-    [block1.3]/[webpack]/lib/Compilation.js:585:9
-  
-  
-  - Hook.js:21 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
-    [block1.3]/[tapable]/lib/Hook.js:21:14
-  
-  - Compilation.js:3426 cont
-    [block1.3]/[webpack]/lib/Compilation.js:3426:34
-  
-  - Compilation.js:3482 
-    [block1.3]/[webpack]/lib/Compilation.js:3482:10
-  
-  - async.js:3485 symbolIterator
-    [block1.3]/[neo-async]/async.js:3485:9
-  
-  - async.js:3527 done
-    [block1.3]/[neo-async]/async.js:3527:9
-  
-  - async.js:2830 
-    [block1.3]/[neo-async]/async.js:2830:7
-  
-</anonymous></pre>
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>СPS-сервис</title>
+
+  <!--<link rel="stylesheet" href="css/swiper-bundle.min.css"/>-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="b88d04fba731603756b1.scss">
+<script defer="defer" src="./js/main.js"></script></head>
+
+<body class="body">
+  <div class="ewer">
+
+    <div class="sidebar">
+      <div class="sidebar_conteiner">
+        <!--<div>-->
+          <header class="header_mainmenu">
+            <div class="header_menu">
+              <div class="cps_mobile_menu">
+                <div class="cps_row_mobile_menu">
+                  <img alt="burger" class="icon" src="img/burger.svg">
+                  <img alt="Group" class="Group2" src="img/Group.svg">
+                  <img alt="search" class="icon" src="img/search.svg">
+                </div>
+              </div>
+            </div>
+            <div class="mainMenu">
+              <ul class="mainMenu_navigation">
+                <li class="mM_navi__item">
+                  <a class="mM_navi__link" href="/">
+                    Ремонт техники</a>
+                </li>
+                <li class="mM_navi__item">
+                  <a class="mM_navi__link" href="/">
+                    Услуги и сервисы</a>
+                </li>
+                <li class="mM_navi__item">
+                  <a class="mM_navi__link" href="/">
+                    Корпоративным клиентам</a>
+                </li>
+                <li class="mM_navi__item">
+                  <a class="mM_navi__link" href="/">
+                    Продавцам техники</a>
+                </li>
+                <li class="mM_navi__item">
+                  <a class="mM_navi__link" href="/">
+                    Партнерам</a>
+                </li>
+                <li class="mM_navi__item">
+                  <a class="mM_navi__link" href="/">
+                    Производителям</a>
+                </li>
+                <li class="mM_navi__item">
+                  <a class="mM_navi__link" href="/">
+                    Наши сервисные центры</a>
+                </li>
+                <li class="mM_navi__item">
+                  <a class="mM_navi__link" href="/">
+                    Контакты</a>
+                </li>
+              </ul>
+            </div>
+
+          </header>
+          <footer class="contact_grup">
+            <div class="contact_box">
+              <div class="icon_contact">
+                <img alt="chat_copy" class="icon" src="img/chat.copy.svg">
+                <img alt="chat" class="icon" src="img/chat.svg">
+                <img alt="profile" class="icon" src="img/profile.svg">
+              </div>
+            </div>
+            <div class="contact_info">
+              <a class="contact_info_mail">mail@cps.com</a>
+              <a class="contact_info_namber">8 800 890 8900</a>
+            </div>
+            <div class="lang">
+              <a class="lang_item">RU</a>
+              <a class="lang_item">EN</a>
+              <a class="lang_item">CH</a>
+            </div>
+          </footer>
+        <!--</div>-->
+      </div>
+    </div>
+    <div class="one">
+      <header>
+
+        <div class="header_conteiner">
+          <footer class="footer">
+            <div class="foter_menuback">
+              <div class="cps">
+                <div class="cps_row">
+                  <div class="cps_image_left">
+                    <img alt="burger" class="burger" src="img/burger.svg">
+                    <img alt="divider1" class="divider1" src="img/divider.svg">
+
+                    <div class="logo">
+                      <img alt="Group" class="Group" src="img/Group.svg">
+                    </div>
+
+                  </div>
+                  <div class="cps_image_rigt">
+                    <img alt="call" class="call" src="img/call.svg">
+                    <img alt="chat" class="chat" src="img/chat.svg">
+                    <img alt="profile" class="profile" src="img/profile.svg">
+                    <img alt="divider" class="divider" src="img/divider.svg">
+                    <img alt="repairitem" class="repairitem" src="img/repairitem.svg">
+                    <img alt="checkstatus" class="checkstatus" src="img/checkstatus.svg">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </header>
+      <main class="main">
+        <footer class="shadow">
+          <div class="shadov_row">
+          </div>
+        </footer>
+        <div class="services">
+          <div class="services_1120">
+            <div class="services_row">
+              <div class="services_image">
+                <img src="img/highlight.svg" alt="highlight">
+              </div>
+              <div class="services_body">
+                <div class="service_title">
+                  Услуги и сервисы
+                </div>
+              </div>
+            </div>
+            <div class="menu_left">
+              <a class="menu_left_text" href="">Оставить заявку
+                <img alt="repairitem" class="repairitem" src="img/repairitem.svg"></a>
+              <a class="menu_left_text" href="">Статус ремонта
+                <img alt="checkstatus" class="checkstatus" src="img/checkstatus.svg"></a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="slidemenu_1">
+          <ul class="slidemenu">
+            <li><input type="button" value="Ремонтируемые устройства">
+            </li>
+            <li><a href="">Дополнительные услуги</a></li>
+            <li><a href="">Цены на услуги</a></li>
+            <li><a href="">Специальные цены</a></li>
+            <li><a href="">Адреса сервисных ценров</a></li>
+            <li><a href="">Отзывы</a></li>
+          </ul>
+        </div>
+        <div class="content">
+          <div class="content_row">
+            <div class="content_text">
+              <p1 class="text">
+                Мы являемся авторизованным
+                сервисным центром по ремонту техники
+                Dell. Только у нас вы можете
+                отремонтировать свой ноутбук Dell с
+                официальной гарантией производителя.
+              </p1>
+              <p2 class="text2">
+                Мы успешно работаем с 1992 года и
+                заслужили репутацию надежного партнера,
+                что подтверждает большое количество постоянных клиентов.
+              </p2>
+              <p3 class="text3">
+                Мы гордимся тем, что к нам обращаются
+                по рекомендациям и, в свою очередь,
+                советуют нас родным и близким.
+              </p3>
+            </div>
+            <div class="read-more">
+              <button class="content_button">
+                <span class="read-more_icon">
+                  <img src="img/expand.svg" alt="expand">
+                </span>
+                <span class="read-more_text">Читать далее</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="content_logo">
+            <img src="img/Logo.png" alt="logo">
+          </div>
+
+
+        </div>
+        
+      </main>
+    </div>
+    <div class="three">
+      <div class="shadov_row2"> </div>
+      <header class="header_cap">
+        <a class="cap_content">
+          Ремонт техники различных брендов</a>
+      </header>
+
+      <nav class="swiper cap_services">
+        <ul class="swiper-wrapper brands">
+          <li class="swiper-slide brands_services">
+            <img src="img/cat1.svg" alt="icon">
+          </li>
+          <li class="swiper-slide brands_services">
+            <img src="img/cat1 copy.svg" alt="icon">
+          </li>
+          <li class="swiper-slide brands_services">
+            <img src="img/cat1 copy 2.svg" alt="icon">
+          </li>
+          <li class="swiper-slide brands_services">
+            <img src="img/cat1 copy 3.svg" alt="icon">
+          </li>
+          <li class="swiper-slide brands_services">
+            <img src="img/cat1 copy 7.svg" alt="icon">
+          </li>
+          <li class="swiper-slide brands_services">
+            <img src="img/cat1 copy 8.svg" alt="icon">
+          </li>
+          <li class="swiper-slide brands_services">
+            <img src="img/cat1 copy 9.svg" alt="icon">
+          </li>
+          <li class="swiper-slide brands_services">
+            <img src="img/cat1 copy 10.svg" alt="icon">
+          </li>
+          <li class="swiper-slide brands_services">
+            <img src="img/cat1.svg" alt="icon">
+          </li>
+          <li class="swiper-slide brands_services">
+            <img src="img/cat1 copy.svg" alt="icon">
+          </li>
+          <li class="swiper-slide brands_services">
+            <img src="img/cat1 copy 11.svg" alt="icon">
+          </li>
+          <li class="swiper-slide brands_services">
+            <img src="img/cat1 copy 11.svg" alt="icon">
+          </li>
+        </ul>
+        <div class="swiper-pagination oval">
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+        </div>
+        <button class="show-more_button">
+          <div class="show-hide" id="iconButton">
+            <img class="open_img" src="img/openexpand.svg" alt="expand">
+            <p class="open_icon_text">Показать всё</p>
+          </div>
+        </button>
+      </nav>
+
+    </div>
+    <div class="four">
+      <div class="shadov_row2"> </div>
+      <header class="header_cap">
+        <a class="cap_content">
+          Ремонт различных видов техники</a>
+      </header>
+      <nav class="swiper repair_container">
+        <ul class="swiper-wrapper repair">
+          <li class="swiper-slide repair_services">
+            <a href="icon/go.svg" class="repair_list">Ремонт ноутбуков</a>
+          </li>
+          <li class="swiper-slide repair_services">
+            <a href="icon/go.svg" class="repair_list">Ремонт планшетов</a>            
+          </li>
+          <li class="swiper-slide repair_services">
+            <a href="icon/go.svg" class="repair_list">Ремонт ПК</a>
+          </li>
+          <li class="swiper-slide repair_services">
+            <a href="icon/go.svg" class="repair_list">Ремонт мониторов</a>
+          </li>
+          <li class="swiper-slide repair_services">
+            <a href="icon/go.svg" class="repair_list">Ремонт ПК</a>
+          </li>
+          <li class="swiper-slide repair_services">
+            <a href="icon/go.svg" class="repair_list">Ремонт мониторов</a>
+          </li>          
+        </ul>
+        <div class="swiper-pagination oval">
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+        </div>
+        <button class="show-more_button">
+          <div class="show-hide" id="iconButton">
+            <img class="open_img" src="img/openexpand.svg" alt="expand">
+            <p class="open_icon_text">Показать всё</p>
+          </div>
+        </button>
+      </nav>
+    </div>
+    <div class="five">
+      <div class="shadov_row2"> </div>
+      <header class="header_cap">
+        <a class="cap_content">
+          Цены на услуги</a>
+      </header>
+      <nav class="swiper prices_container">
+        <ul class="swiper-wrapper prices">
+          <li class="swiper-slide prices_list up">
+            <a class="prices-list prices-column-first">Ремонтные услуги</a>
+            <a class="prices-list prices-column-second">Цена</a>
+            <a class="prices-list prices-column-third">Срок</a>
+            <a class="prices-list prices-column-fourth"> </a>
+          </li>
+          <li class="swiper-slide prices_list">
+            <p class="prices-list_name prices-list--hidden">Ремонтные услуги</p>
+            <p class="prices-list_sname prices-column-first">Тестирование с выдачей технического заключения</p>
+            <p class="prices-list_name prices-list--hidden">Цена</p>
+            <p class="prices-list_sname prices-column-fourth">1000 &#8381;</p>
+            <p class="prices-list_name prices-list--hidden">Срок</p>
+            <p class="prices-list_sname prices-column-third">30-120 мин</p>
+            <button class="red_button red-button--price prices-column-fourth">заказать</button>
+          </li>
+          <li class="swiper-slide prices_list">
+            <p class="prices-list_name prices-list--hidden">Ремонтные услуги</p>
+            <p class="prices-list_sname prices-column-first">Диагностика</p>
+            <p class="prices-list_name prices-list--hidden">Цена</p>
+            <p class="prices-list_sname prices-column-second">Бесплатно</p>
+            <p class="prices-list_name prices-list--hidden">Срок</p>
+            <p class="prices-list_sname prices-column-third">30 мин</p>
+            <button class="red_button red-button--price prices-column-fourth">заказать</button>           
+          </li>
+          <li class="swiper-slide prices_list">
+            <p class="prices-list_name prices-list--hidden">Ремонтные услуги</p>
+            <p class="prices-list_sname prices-column-first">Замена дисплея</p>
+            <p class="prices-list_name prices-list--hidden">Цена</p>
+            <p class="prices-list_sname prices-column-second">1000 &#8381;</p>
+            <p class="prices-list_name prices-list--hidden">Срок</p>
+            <p class="prices-list_sname prices-column-third">30-120 мин</p>
+            <button class="red_button red-button--price prices-column-fourth">заказать</button>
+          </li>
+          <li class="swiper-slide prices_list">
+            <p class="prices-list_name prices-list--hidden">Ремонтные услуги</p>
+            <p class="prices-list_sname prices-column-first">Замена полифонического динамика</p>
+            <p class="prices-list_name prices-list--hidden">Цена</p>
+            <p class="prices-list_sname prices-column-second">1000 &#8381;</p>
+            <p class="prices-list_name prices-list--hidden">Срок</p>
+            <p class="prices-list_sname prices-column-third">30-120 мин</p>
+            <button class="red_button red-button--price prices-column-fourth">заказать</button>
+          </li>          
+          <li class="swiper-slide prices_list">
+            <p class="prices-list_name prices-list--hidden">Ремонтные услуги</p>
+            <p class="prices-list_sname prices-column-first">Замена программного обеспечения</p>
+            <p class="prices-list_name prices-list--hidden">Цена</p>
+            <p class="prices-list_sname prices-column-second">1000 &#8381;</p>
+            <p class="prices-list_name prices-list--hidden">Срок</p>
+            <p class="prices-list_sname prices-column-third">30-120 мин</p>
+            <button class="red_button red-button--price prices-column-fourth">заказать</button>
+           </li>
+        </ul>
+        <div class="swiper-pagination oval">
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+          <span class="swiper-pagination-bullet oval_item"></span>
+        </div>
+        <footer class="info">
+          <p class="info_text">
+            Все цены указаны с учетом НДС. Стоимость ремонта указана
+            на единичную услугу. Для получения коммерческого 
+            предложения на постоянное обслуживание, оставьте заявку.
+          </p>
+          <a class="info_link">Получить коммерческое предложение</a>
+        </footer>
+      </nav>
+    </div>
+    <div class="footer_block">
+      <p class="footer_block_first">
+        <span class="footer_block_year">© 2019 CPS</span>
+        <span class="footer_block_developed">Разработано командой Apesong</span>
+      </p>
+      <p class="footer_block_policy">Политика конфиденциальности</p>
+      <p class="footer_block_info">Информация, размещенная 
+        на данной странице, не является публичной офертой</p>
+    </div>
+  </div>
+      <!--<modal class="feedback_container">
+        <button class="feedback_button round_button round_button--close round_button--close-form">
+        </button>
+        <h2 class="feedback_header">Обратная связь</h2>
+        <form action="#" method="post" class="feedback_form">
+          <input class="feedback_form__input" type="text" placeholder="Имя" required>
+          <input class="feedback_form__input" type="text" placeholder="Фамилия" required>
+          <input class="feedback_form__input" type="email" placeholder="Электронная почта" required>
+          <textarea name="feedback" class="feedback_form__text" placeholder="Сообщение"></textarea>
+          <p class="personal_data">
+            Нажимая “отправить”, вы даете согласие на
+            <a href="/" class="personal_data--pink">обработку персональных данных</a>
+            и соглашаетесь с нашей
+            <a href="/" class="personal_data--pink">политикой конфиденциальности.</a>
+          </p>
+          <button class="red_button red_button--form" type="submit">
+            <span class="red_button__text">Отправить</span>
+          </button>
+        </form>
+      </modal>-->
+      <!--<modal class="call_container">
+        <button class="call_button round_button round_button--close round_button--close-form">
+        </button>
+        <h2 class="call_header">Заказать звонок</h2>
+        <form action="#" method="post" class="call_form">
+          <input class="call_form__phone-input" type="tel" pattern="[0-9]{11}" placeholder="Телефон" required minlength="11" maxlength="11">
+          <p class="personal_data">
+            Нажимая “отправить”, вы даете согласие на
+            <a href="/" class="personal_data--pink">обработку персональных данных</a>
+            и соглашаетесь с нашей
+            <a href="/" class="personal_data--pink">политикой конфиденциальности.</a>
+          </p>
+          <button class="red_button red_button--form">
+            <span class="red_button__text">Отправить</span>
+          </button>
+        </form>
+      </modal>-->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="21e4e5f99ce845815a54.js"></script>
+</body>
+
+</html>
