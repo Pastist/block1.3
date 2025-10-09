@@ -1,4 +1,5 @@
-
+import '../scss/styles.scss';
+import './scss/style.scss';
 
 
 const swiper = new Swiper('.swiper', {
