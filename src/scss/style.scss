@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'TT Lakes';
-  src: url('/fonts/TTLakes-Regular.woff') format('woff');
+  src: url('../fonts/TTLakes-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: 'TT Lakes';
-  src: url('/fonts/TTLakes-Medium.woff') format('woff');
+  src: url('../fonts/TTLakes-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: 'TT Lakes';
-  src: url('/fonts/TTLakes-Bold.woff') format('woff');
+  src: url('../fonts/TTLakes-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -541,7 +541,7 @@
   border: 1px solid #EAEAEA;
   background: #FFFFFF;
   flex-shrink: 0;
-  background-image: url(/icon/go.svg);
+  background-image: url(../icon/go.svg);
   background-repeat: no-repeat;
   background-size: 15%;
   background-position: 90% 85%;
@@ -725,7 +725,7 @@
   background-color: #ff3e79;
   border: none;
   border-radius: 15px;
-  background-image: url(/icon/dropdown.svg);
+  background-image: url(../icon/dropdown.svg);
   background-repeat: no-repeat;
   background-position: 88% 50%;
   position: absolute;
@@ -771,7 +771,7 @@
 }
 
 .info_link::after {
-  content: url(/icon/more.svg);
+  content: url(../icon/more.svg);
   padding-left: 2px;
   position: relative;
   top: 8px;
@@ -888,7 +888,7 @@
   cursor: pointer;
 }
 .round_button--close {
-  background-image: url(/icon/close.svg);
+  background-image: url(../icon/close.svg);
   border: none;
   background-color: transparent;
 }
@@ -993,7 +993,7 @@
     width: 440px;
   }}
 .round_button--close {
-  background-image: url(/icon/close.svg);
+  background-image: url(../icon/close.svg);
 }
 @media (min-width: 768px) {
   .call_button {
