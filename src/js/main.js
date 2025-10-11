@@ -1,5 +1,6 @@
-import '../scss/style.scss';
 
+import '../scss/style.scss';
+import '../index.js';
 
 const swiper = new Swiper('.swiper', {
   slidesPerView: 'auto',
