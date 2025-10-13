@@ -1,6 +1,6 @@
 
 import '../scss/style.scss';
-import '../index.js';
+
 
 const swiper = new Swiper('.swiper', {
   slidesPerView: 'auto',
@@ -13,7 +13,7 @@ const swiper = new Swiper('.swiper', {
 //  if(currentInstance) {
 //    currentInstance.destroy(true, true);
 //    sliderInstances.delete(selector);
-//    currentInstance = null;
+//    currentInstance = null
 //  }
 //    const slides = sliderElement.querySelectorAll(".swiper-pagination");
 //  slides.forEach((slide) => {
