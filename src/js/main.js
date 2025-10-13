@@ -1,14 +1,32 @@
-
 import '../scss/style.scss';
 
 
-const swiper = new Swiper('.swiper', {
+const swiper = new Swiper('.swiper_services', {
   slidesPerView: 'auto',
   spaceBetween: 0,
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
   }, });
+
+const swiper = new Swiper('.swiper_repair', {
+  slidesPerView: 'auto',
+  spaceBetween: 0,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+});
+
+const swiper = new Swiper('.swiper_prices', {
+  slidesPerView: 'auto',
+  spaceBetween: 0,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+});
+
 //  function destroySwiper() {
 //  if(currentInstance) {
 //    currentInstance.destroy(true, true);

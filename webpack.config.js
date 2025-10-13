@@ -1,10 +1,10 @@
-const path = require('path');
+ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 module.exports = {
-  mode: 'development',
+    mode: 'development',
   entry: './src/js/main.js',
   output: {
     filename: 'bundle.[contenthash].js',
@@ -42,7 +42,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/icon/images/[name][ext]',
+          filename: 'assets/images/[name][ext]',
         },
       },
 
@@ -64,5 +64,4 @@ module.exports = {
       filename: '[name].[contenthash].css',
     }),
   ],
-  
 };
