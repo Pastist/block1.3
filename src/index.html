@@ -8,7 +8,7 @@
 
   <!--<link rel="stylesheet" href="css/swiper-bundle.min.css"/>-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="../src/scss/style.scss" />
+  <link rel="stylesheet" href="../src/assets/scss/style.scss" />
   
 </head>
 
@@ -22,9 +22,9 @@
             <div class="header_menu">
               <div class="cps_mobile_menu">
                 <div class="cps_row_mobile_menu">
-                  <img alt="burger" class="icon" src="./icon/burger.svg" />
-                  <img alt="Group" class="Group2" src="./icon/Group.svg" />
-                  <img alt="search" class="icon" src="./icon/search.svg" />
+                  <img alt="burger" class="icon icon_block" src="../assets/icon/burger.svg" />
+                  <img alt="Group" class="Group2" src="./assets/icon/Group.svg" />
+                  <img alt="search" class="icon" src="./assets/icon/search.svg" />
                 </div>
               </div>
             </div>
@@ -69,8 +69,8 @@
           <footer class="contact_grup">
             <div class="contact_box">
               <div class="icon_contact">
-                <img alt="chat_copy" class="icon" src="/icon/chat.copy.svg" />
-                <img alt="chat" class="icon" src="./icon/chat.svg" />
+                <img alt="call" class="call round-button--call" src="./assets/call.svg" />
+                <img alt="chat" class="chat round-button--chat" src="./icon/chat.svg" />
                 <img alt="profile" class="icon" src="../icon/profile.svg" />
               </div>
             </div>
@@ -392,9 +392,9 @@
         на данной странице, не является публичной офертой</p>
     </div>
   </div>
-      <!--<modal class="feedback_container">
-        <button class="feedback_button round_button round_button--close round_button--close-form">
-        </button>
+       <div class="modal feedback_container">
+        <div class="feedback_button round_button round_button--close">
+        </div>
         <h2 class="feedback_header">Обратная связь</h2>
         <form action="#" method="post" class="feedback_form">
           <input class="feedback_form__input" type="text" placeholder="Имя" required>
@@ -407,14 +407,14 @@
             и соглашаетесь с нашей
             <a href="/" class="personal_data--pink">политикой конфиденциальности.</a>
           </p>
-          <button class="red_button red_button--form" type="submit">
+          <div class="red_button red_button--form" type="submit">
             <span class="red_button__text">Отправить</span>
-          </button>
+          </div>
         </form>
-      </modal>-->
-      <!--<modal class="call_container">
-        <button class="call_button round_button round_button--close round_button--close-form">
-        </button>
+      </div>
+      <div class="modal call_container">
+        <div class="call_button round_button round_button--close">
+        </div>
         <h2 class="call_header">Заказать звонок</h2>
         <form action="#" method="post" class="call_form">
           <input class="call_form__phone-input" type="tel" pattern="[0-9]{11}" placeholder="Телефон" required minlength="11" maxlength="11">
@@ -424,11 +424,12 @@
             и соглашаетесь с нашей
             <a href="/" class="personal_data--pink">политикой конфиденциальности.</a>
           </p>
-          <button class="red_button red_button--form">
+          <div class="red_button red_button--form">
             <span class="red_button__text">Отправить</span>
-          </button>
+          </div>
         </form>
-      </modal>-->
+      </div>
+<div class="overlay modal-hidden"></div>      
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="../src/js/main.js"></script>
