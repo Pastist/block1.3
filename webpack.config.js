@@ -5,10 +5,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   entry: './src/js/main.js',
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, './dist'),
-    publicPath: "./dist/index.html"
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.[contenthash].js',
+    clean: true,
+    assetModuleFilename: 'assets/[name][ext]',
   },
+  //devServer: {
+  //  static: './dist',
+  //  hot: true,
+  //  open: true,
+  //},
   module: {
     rules: [
       // JS / Babel
@@ -18,7 +24,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: ['@babel/preset-env'],
           }
         }
       },
@@ -26,7 +32,7 @@ module.exports = {
       // SASS / CSS
       {
         test: /\.(scss|css)$/,
-        use: [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
 
       // Изображения
@@ -51,6 +57,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      filename: 'index.html',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',

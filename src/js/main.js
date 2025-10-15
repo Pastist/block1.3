@@ -1,5 +1,7 @@
+import "../assets/scss/style.scss";
 
-
+document.addEventListener("DOMContentLoaded", () => {
+  try {
 
 const swiperServicesr = new Swiper('.swiper_services', {
   slidesPerView: 'auto',
@@ -472,5 +474,7 @@ window.closeSidebar = closeSidebar;
 //window.openSidebar = openSidebar;
 //window.closeAllModals = closeAllModals;
 
-
-
+  } catch (error) {
+    console.error("Error initializing components:", error);
+  }
+});
