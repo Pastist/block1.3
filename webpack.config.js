@@ -3,18 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: 'development',
   entry: './src/js/main.js',
   output: {
-    filename: 'bundle.[contenthash].js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
-    assetModuleFilename: 'assets/[name][ext]',
-  },
-  devServer: {
-    static: './dist',
-    hot: true,
-    open: true,
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, './dist'),
+    publicPath: "./dist/index.html"
   },
   module: {
     rules: [
@@ -33,7 +26,7 @@ module.exports = {
       // SASS / CSS
       {
         test: /\.(scss|css)$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'sass-loader'],
       },
 
       // Изображения
@@ -41,7 +34,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/images/[name][ext]',
+          filename: 'assets/icon/[name][ext]',
         },
       },
 
