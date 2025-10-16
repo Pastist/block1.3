@@ -19,7 +19,6 @@
     "@babel/preset-env": "^7.28.3",
     "@svgr/webpack": "^8.1.0",
     "autoprefixer": "^10.4.7",
-    "babel-loader": "^8.4.1",
     "copy-webpack-plugin": "^10.2.4",
     "cross-env": "^7.0.3",
     "css-loader": "^6.11.0",
@@ -46,9 +45,6 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.0"
   },
-  "presets": [
-    "@babel/preset-env"
-  ],
   "dependencies": {
     "focus-visible": "^5.2.0",
     "normalize.css": "^8.0.1",

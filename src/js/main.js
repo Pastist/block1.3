@@ -1,4 +1,8 @@
-import "../assets/scss/style.scss";
+import '../../node_modules/focus-visible/dist/focus-visible';
+import '../assets/scss/style.scss';
+import '../index.html';
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   try {

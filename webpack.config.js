@@ -10,41 +10,37 @@ module.exports = {
     clean: true,
     assetModuleFilename: 'assets/[name][ext]',
   },
-  //devServer: {
-  //  static: './dist',
-  //  hot: true,
-  //  open: true,
-  //},
   module: {
     rules: [
-      // JS / Babel
+      // JS / Babel - УПРОЩАЕМ КОНФИГУРАЦИЮ
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          }
-        }
+        use: 'babel-loader' // ← УБИРАЕМ options отсюда
       },
 
-      // SASS / CSS
+      // SASS / CSS - ВЫБИРАЕМ ОДИН ПОДХОД:
+
+      // Вариант для разработки (с style-loader):
       {
         test: /\.(scss|css)$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
 
-      // Изображения
+      // ИЛИ Вариант для production (с MiniCssExtractPlugin):
+      // {
+      //   test: /\.(scss|css)$/,
+      //   use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      // },
+
+      // Остальные правила остаются без изменений...
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         type: 'asset/resource',
-        generator: {
-          filename: 'assets/icon/[name][ext]',
-        },
+        //generator: {
+        //  filename: 'assets/icon/[name][ext]',
+        //},
       },
-
-      // Шрифты
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
         type: 'asset/resource',
@@ -59,8 +55,9 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html',
     }),
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
-    }),
+    // Раскомментируйте если используете MiniCssExtractPlugin.loader:
+    // new MiniCssExtractPlugin({
+    //   filename: '[name].[contenthash].css',
+    // }),
   ],
 };
