@@ -42,6 +42,10 @@ module.exports = {
         //},
       },
       {
+      test: /\.html$/i, // применяется к файлам .html
+      loader: "html-loader",
+      },
+      {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
         type: 'asset/resource',
         generator: {
@@ -53,11 +57,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      filename: 'index.html',
     }),
     // Раскомментируйте если используете MiniCssExtractPlugin.loader:
-    // new MiniCssExtractPlugin({
-    //   filename: '[name].[contenthash].css',
-    // }),
+     new MiniCssExtractPlugin({
+       filename: '[name].[contenthash].css',
+     }),
   ],
 };
