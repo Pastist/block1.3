@@ -16,11 +16,12 @@
 
     <div class="sidebar">
       <div class="sidebar_conteiner">
+        <!--<div>-->
           <header class="header_mainmenu">
             <div class="header_menu">
               <div class="cps_mobile_menu">
                 <div class="cps_row_mobile_menu">
-                  <img alt="close" class="icon round_button--close-menu icon_block" src="./assets/icon/close.svg" />
+                  <img alt="burger" class="burger" src="./assets/icon/burger.svg"/>
                   <img alt="Group" class="Group2" src="./assets/icon/Group.svg" />
                   <img alt="search" class="icon" src="./assets/icon/search.svg" />
                 </div>
@@ -67,8 +68,8 @@
           <footer class="contact_grup">
             <div class="contact_box">
               <div class="icon_contact">
-                <img alt="call" class="icon round-button--call" src="./assets/icon/call.svg" />
-                <img alt="chat" class="icon round-button--chat" src="./assets/icon/chat.svg" />
+                <img alt="chat_copy" class="icon" src="./assets/icon/chat.copy.svg" />
+                <img alt="chat" class="icon" src="./assets/icon/chat.svg" />
                 <img alt="profile" class="icon" src="./assets/icon/profile.svg" />
               </div>
             </div>
@@ -82,6 +83,7 @@
               <a class="lang_item">CH</a>
             </div>
           </footer>
+        <!--</div>-->
       </div>
     </div>
     <div class="one">
@@ -93,8 +95,8 @@
               <div class="cps">
                 <div class="cps_row">
                   <div class="cps_image_left">
-                    <img alt="burger" class="icon round-button--burger" src="./assets/icon/burger.svg" />
-                    <img alt="divider1" class="icon" src="./assets/icon/divider.svg" />
+                    <img alt="icon" class="burger" src="./assets/icon/burger.svg" />
+                    <img alt="divider1" class="divider1" src="./assets/icon/divider.svg" />
 
                     <div class="logo">
                       <img alt="Group" class="Group" src="./assets/icon/Group.svg" />
@@ -102,12 +104,12 @@
 
                   </div>
                   <div class="cps_image_rigt">
-                    <img alt="call" class="icon round-button--call" src="./assets/icon/call.svg" />
-                    <img alt="chat" class="icon round-button--chat" src="./assets/icon/chat.svg" />
-                    <img alt="profile" class="icon" src="./assets/icon/profile.svg" />
-                    <img alt="divider" class="icon" src="./assets/icon/divider.svg" />
-                    <img alt="repairitem" class="icon" src="./assets/icon/repairitem.svg" />
-                    <img alt="checkstatus" class="icon" src="./assets/icon/checkstatus.svg" />
+                    <img alt="call" class="call" src="./assets/icon/call.svg" />
+                    <img alt="chat" class="chat" src="./assets/icon/chat.svg" />
+                    <img alt="profile" class="profile" src="./assets/icon/profile.svg" />
+                    <img alt="divider" class="divider" src="./assets/icon/divider.svg" />
+                    <img alt="repairitem" class="repairitem" src="./assets/icon/repairitem.svg" />
+                    <img alt="checkstatus" class="checkstatus" src="./assets/icon/checkstatus.svg" />
                   </div>
                 </div>
               </div>
@@ -200,7 +202,7 @@
           Ремонт техники различных брендов</a>
       </header>
 
-      <nav class="swiper_services cap_services">
+      <nav class="swiper cap_services">
         <ul class="swiper-wrapper brands">
           <li class="swiper-slide brands_services">
             <img src="./assets/icon/cat1.svg" alt="icon">
@@ -267,25 +269,32 @@
         <a class="cap_content">
           Ремонт различных видов техники</a>
       </header>
-      <nav class="swiper_repair repair_container">
+      <nav class="swiper repair_container">
         <ul class="swiper-wrapper repair">
           <li class="swiper-slide repair_services">
-            <a href="./assets/icon/go.svg" class="repair_list">Ремонт ноутбуков</a>
+            <p class="repair_list">Ремонт ноутбуков</p>            
+            <img class="go" src="./assets/icon/go.svg" alt="expand">
+            </a>
           </li>
           <li class="swiper-slide repair_services">
-            <a href="./assets/icon/go.svg" class="repair_list">Ремонт планшетов</a>            
+            <p class="repair_list">Ремонт планшетов</p>            
+            <img class="go" src="./assets/icon/go.svg" alt="expand">
           </li>
           <li class="swiper-slide repair_services">
-            <a href="./assets/icon/go.svg" class="repair_list">Ремонт ПК</a>
+            <p class="repair_list">Ремонт ПК</p>            
+            <img class="go" src="./assets/icon/go.svg" alt="expand">
           </li>
           <li class="swiper-slide repair_services">
-            <a href="./assets/icon/go.svg" class="repair_list">Ремонт мониторов</a>
+            <p class="repair_list">Ремонт мониторов</p>            
+            <img class="go" src="./assets/icon/go.svg" alt="expand">
           </li>
           <li class="swiper-slide repair_services">
-            <a href="./assets/icon/go.svg" class="repair_list">Ремонт ПК</a>
+            <p class="repair_list">Ремонт ПК</p>            
+            <img class="go" src="./assets/icon/go.svg" alt="expand">
           </li>
           <li class="swiper-slide repair_services">
-            <a href="./assets/icon/go.svg" class="repair_list">Ремонт мониторов</a>
+            <p class="repair_list">Ремонт мониторов</p>            
+            <img class="go" src="./assets/icon/go.svg" alt="expand">
           </li>          
         </ul>
         <div class="swiper-pagination oval">
@@ -308,7 +317,7 @@
         <a class="cap_content">
           Цены на услуги</a>
       </header>
-      <nav class="swiper_prices prices_container">
+      <nav class="swiper prices_container">
         <ul class="swiper-wrapper prices">
           <li class="swiper-slide prices_list up">
             <a class="prices-list prices-column-first">Ремонтные услуги</a>
@@ -323,7 +332,9 @@
             <p class="prices-list_sname  prices-column-fourth">1000 &#8381;</p>
             <p class="prices-list_name prices-list--hidden">Срок</p>
             <p class="prices-list_sname  prices-column-third">30-120 мин</p>
-            <button class="red_button red-button--price prices-column-fourth">заказать</button>
+            <button class="red_button red-button--price prices-column-fourth">заказать
+              <img class="dropdown" src="./assets/icon/dropdown.svg" alt="expand">
+            </button>
           </li>
           <li class="swiper-slide prices_list">
             <p class="prices-list_name prices-list--hidden">Ремонтные услуги</p>
@@ -332,7 +343,9 @@
             <p class="prices-list_sname prices-column-second">Бесплатно</p>
             <p class="prices-list_name prices-list--hidden">Срок</p>
             <p class="prices-list_sname  prices-column-third">30 мин</p>
-            <button class="red_button red-button--price prices-column-fourth">заказать</button>           
+            <button class="red_button red-button--price prices-column-fourth">заказать
+              <img class="dropdown" src="./assets/icon/dropdown.svg" alt="expand">
+            </button>           
           </li>
           <li class="swiper-slide prices_list">
             <p class="prices-list_name prices-list--hidden">Ремонтные услуги</p>
@@ -341,7 +354,9 @@
             <p class="prices-list_sname prices-column-second">1000 &#8381;</p>
             <p class="prices-list_name prices-list--hidden">Срок</p>
             <p class="prices-list_sname prices-column-third">30-120 мин</p>
-            <button class="red_button red-button--price prices-column-fourth">заказать</button>
+            <button class="red_button red-button--price prices-column-fourth">заказать
+              <img class="dropdown" src="./assets/icon/dropdown.svg" alt="expand">
+            </button>
           </li>
           <li class="swiper-slide prices_list">
             <p class="prices-list_name prices-list--hidden">Ремонтные услуги</p>
@@ -350,7 +365,9 @@
             <p class="prices-list_sname prices-column-second">1000 &#8381;</p>
             <p class="prices-list_name prices-list--hidden">Срок</p>
             <p class="prices-list_sname prices-column-third">30-120 мин</p>
-            <button class="red_button red-button--price prices-column-fourth">заказать</button>
+            <button class="red_button red-button--price prices-column-fourth">заказать
+              <img class="dropdown" src="./assets/icon/dropdown.svg" alt="expand">
+            </button>
           </li>          
           <li class="swiper-slide prices_list">
             <p class="prices-list_name prices-list--hidden">Ремонтные услуги</p>
@@ -359,7 +376,9 @@
             <p class="prices-list_sname prices-column-second">1000 &#8381;</p>
             <p class="prices-list_name prices-list--hidden">Срок</p>
             <p class="prices-list_sname prices-column-third">30-120 мин</p>
-            <button class="red_button red-button--price prices-column-fourth">заказать</button>
+            <button class="red_button red-button--price prices-column-fourth">заказать
+              <img class="dropdown" src="./assets/icon/dropdown.svg" alt="expand">
+            </button>
            </li>
         </ul>
         <div class="swiper-pagination oval">
@@ -389,8 +408,9 @@
         на данной странице, не является публичной офертой</p>
     </div>
   </div>
-       <div class="modal feedback_container">
-        <div class="feedback_button round_button round_button--close">
+      <modal class="feedback_container">
+        <div class="feedback_button round_button round_button--close round_button--close-form">
+          <img class="close" src="./assets/icon/close.svg" alt="expand"> </div>
         </div>
         <h2 class="feedback_header">Обратная связь</h2>
         <form action="#" method="post" class="feedback_form">
@@ -408,9 +428,10 @@
             <span class="red_button__text">Отправить</span>
           </div>
         </form>
-      </div>
-      <div class="modal call_container">
-        <div class="call_button round_button round_button--close">
+      </modal>
+      <modal class="call_container">
+        <div class="call_button round_button round_button--close round_button--close-form">
+          <img class="close" src="./assets/icon/close.svg" alt="expand"> </div>
         </div>
         <h2 class="call_header">Заказать звонок</h2>
         <form action="#" method="post" class="call_form">
@@ -425,8 +446,7 @@
             <span class="red_button__text">Отправить</span>
           </div>
         </form>
-      </div>
-<div class="overlay modal-hidden"></div>      
+      </modal>
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="../src/js/main.js"></script>

@@ -5,14 +5,16 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
-const { extendDefaultPlugins } = require("svgo");
 
-const json = require('./src/js/main.js');
-const project_name = json.name;
+// Получаем имя проекта из package.json
+const packageJson = require('./package.json');
+const project_name = packageJson.name;
+
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 
 const filename = (ext) => isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`;
+
 const optimization = () => {
   const configObj = {
     splitChunks: {
@@ -28,28 +30,30 @@ const optimization = () => {
         minimizer: {
           implementation: ImageMinimizerPlugin.imageminMinify,
           options: {
-            // Lossless optimization with custom option
-            // Feel free to experiment with options for better result for you
             plugins: [
               ["gifsicle", { interlaced: true }],
               ["jpegtran", { progressive: true }],
               ["optipng", { optimizationLevel: 5 }],
-              // Svgo configuration here https://github.com/svg/svgo#configuration
               [
                 "svgo",
                 {
-                  plugins: extendDefaultPlugins([
+                  plugins: [
                     {
-                      name: "removeViewBox",
-                      active: false,
-                    },
-                    {
-                      name: "addAttributesToSVGElement",
+                      name: "preset-default",
                       params: {
-                        attributes: [{ xmlns: "http://www.w3.org/2000/svg" }],
+                        overrides: {
+                          removeViewBox: false,
+                          addAttributesToSVGElement: {
+                            params: {
+                              attributes: [
+                                { xmlns: "http://www.w3.org/2000/svg" },
+                              ],
+                            },
+                          },
+                        },
                       },
                     },
-                  ]),
+                  ],
                 },
               ],
             ],
@@ -76,7 +80,8 @@ const plugins = () => {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'src/assets'), to: path.resolve(__dirname, 'app/assets'),
+          from: path.resolve(__dirname, 'src/assets'),
+          to: path.resolve(__dirname, 'app/assets'),
         }
       ]
     }),
@@ -86,9 +91,9 @@ const plugins = () => {
 }
 
 module.exports = {
-  mode: 'development',
+  mode: isDev ? 'development' : 'production',
   context: path.resolve(__dirname, 'src'),
-  entry: './src/js/main.js',
+  entry: './js/main.js', // Относительно context
   output: {
     filename: `./js/${filename('js')}`,
     path: path.resolve(__dirname, 'app'),
@@ -101,6 +106,9 @@ module.exports = {
     compress: true,
     hot: true,
     port: 3000,
+    static: {
+      directory: path.resolve(__dirname, 'app')
+    }
   },
   optimization: optimization(),
   plugins: plugins(),
@@ -124,15 +132,9 @@ module.exports = {
         ],
       },
       {
-        test: /\.s[ac]ss$/,
-        use: [{
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            publicPath: (resourcePath, context) => {
-              return path.relative(path.dirname(resourcePath), context) + '/';
-            }
-          }
-        },
+        test: /\.s[ac]ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ],
@@ -143,27 +145,23 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: [['@babel/preset-env', { modules: false }]]
           }
         }
       },
       {
-        test: /\.(?:|jpe?g|png|gif|svg|ico)$/i,
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
         type: 'asset/resource',
         generator: {
-          filename: () => {
-            return isDev ? 'img/[name][ext]' : 'img/[name].[contenthash][ext]';
-          },
-        },
+          filename: `img/${isDev ? '[name][ext]' : '[name].[contenthash][ext]'}`
+        }
       },
       {
-        test: /\.(?:|woff2|woff)$/i,
+        test: /\.(woff2|woff)$/i,
         type: 'asset/resource',
         generator: {
-          filename: () => {
-            return isDev ? 'fonts/[name][ext]' : 'fonts/[name].[contenthash][ext]';
-          },
-        },
+          filename: `fonts/${isDev ? '[name][ext]' : '[name].[contenthash][ext]'}`
+        }
       },
     ]
   },
