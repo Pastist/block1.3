@@ -95,7 +95,66 @@
    box-shadow: 16px 0 52px 0 #dfdbdb;
    background-color: #f8f8f8;
  }
+.feedback_container,
+.call_container {
+  display: none;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
 
+.feedback_container.active,
+.call_container.active {
+  display: flex;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Для sidebar на мобильных */
+@media (max-width: 1118px) {
+  .sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: left 0.3s ease, opacity 0.3s ease;
+    z-index: 1000;
+    opacity: 0;
+  }
+
+  .sidebar.active {
+    display: flex;
+    left: 0;
+    opacity: 1;
+  }
+}
+
+/* Блокировка прокрутки при открытом модальном окне */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Анимация для форм */
+.feedback_form,
+.call_form {
+  transform: translateY(20px);
+  transition: transform 0.3s ease 0.1s;
+}
+
+.feedback_container.active .feedback_form,
+.call_container.active .call_form {
+  transform: translateY(0);
+}
+
+/* Для desktop - sidebar всегда видим */
+@media (min-width: 1119px) {
+  .sidebar {
+    display: flex;
+    position: static;
+    opacity: 1;
+    transform: none;
+  }
+}
  /*.one{
   grid-row: 2
   start: 320px;
@@ -118,6 +177,8 @@
    }.burger{
   display: none;}
  }
+
+
 
  .cps_mobile_menu {
    padding: 15px 20px;
