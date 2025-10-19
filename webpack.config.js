@@ -2,167 +2,69 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
-const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
-
-// Получаем имя проекта из package.json
-const packageJson = require('./package.json');
-const project_name = packageJson.name;
 
 const isDev = process.env.NODE_ENV === 'development';
-const isProd = !isDev;
 
-const filename = (ext) => isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`;
-
-const optimization = () => {
-  const configObj = {
-    splitChunks: {
-      chunks: 'all',
-    },
-  }
-
-  if (isProd) {
-    configObj.minimizer = [
-      new CssMinimizerWebpackPlugin(),
-      new TerserWebpackPlugin(),
-      new ImageMinimizerPlugin({
-        minimizer: {
-          implementation: ImageMinimizerPlugin.imageminMinify,
-          options: {
-            plugins: [
-              ["gifsicle", { interlaced: true }],
-              ["jpegtran", { progressive: true }],
-              ["optipng", { optimizationLevel: 5 }],
-              [
-                "svgo",
-                {
-                  plugins: [
-                    {
-                      name: "preset-default",
-                      params: {
-                        overrides: {
-                          removeViewBox: false,
-                          addAttributesToSVGElement: {
-                            params: {
-                              attributes: [
-                                { xmlns: "http://www.w3.org/2000/svg" },
-                              ],
-                            },
-                          },
-                        },
-                      },
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
-        },
-      }),
-    ];
-  }
-  return configObj;
-}
-
-const plugins = () => {
-  const basePlugins = [
+module.exports = {
+  mode: 'development',
+  entry: './src/js/main.js',
+  output: {
+    filename: 'js/[name].js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+  },
+  devServer: {
+    static: './dist',
+    port: 3000,
+    hot: true,
+    open: true,
+  },
+  plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/index.html'),
-      filename: 'index.html',
-      minify: {
-        collapseWhitespace: isProd
-      },
+      template: './src/index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: `./css/${filename('css')}`,
+      filename: 'css/[name].css',
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'src/assets'),
-          to: path.resolve(__dirname, 'app/assets'),
+          from: 'src/assets',
+          to: 'assets',
+          noErrorOnMissing: true
         }
       ]
     }),
-  ];
-
-  return basePlugins;
-}
-
-module.exports = {
-  mode: isDev ? 'development' : 'production',
-  context: path.resolve(__dirname, 'src'),
-  entry: './js/main.js', // Относительно context
-  output: {
-    filename: `./js/${filename('js')}`,
-    path: path.resolve(__dirname, 'app'),
-    clean: true,
-    publicPath: '',
-  },
-  devServer: {
-    historyApiFallback: true,
-    open: true,
-    compress: true,
-    hot: true,
-    port: 3000,
-    static: {
-      directory: path.resolve(__dirname, 'app')
-    }
-  },
-  optimization: optimization(),
-  plugins: plugins(),
-  devtool: isProd ? false : 'source-map',
+  ],
   module: {
     rules: [
       {
-        test: /\.html$/,
-        loader: 'html-loader',
-      },
-      {
         test: /\.css$/i,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: isDev
-            },
-          },
-          "css-loader"
-        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
-        test: /\.s[ac]ss$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader'
-        ],
+        test: /\.scss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
+
       {
-        test: /\.js$/i,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [['@babel/preset-env', { modules: false }]]
-          }
-        }
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg|ico)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
         generator: {
-          filename: `img/${isDev ? '[name][ext]' : '[name].[contenthash][ext]'}`
+          filename: 'icon/[name][ext]'
         }
       },
       {
-        test: /\.(woff2|woff)$/i,
+        test: /\.(woff|woff2)$/i,
         type: 'asset/resource',
         generator: {
-          filename: `fonts/${isDev ? '[name][ext]' : '[name].[contenthash][ext]'}`
+          filename: 'fonts/[name][ext]'
         }
       },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader'
+      }
     ]
-  },
-}
+  }
+};

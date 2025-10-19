@@ -52,7 +52,7 @@
   display: flex;
   transition-property: transform;
   transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
-  box-sizing: content-box;
+  /*box-sizing: content-box;*/
 }
 
 .swiper-android .swiper-slide,
@@ -69,14 +69,14 @@
   touch-action: pan-x
 }
 
-.swiper-slide {
+/*.swiper-slide {
   flex-shrink: 0;
   width: 239px;
   height: 72px;
   position: relative;
   transition-property: transform;
   display: block
-}
+}*/
 
 .swiper-slide-invisible-blank {
   visibility: hidden
@@ -656,7 +656,7 @@ button.swiper-pagination-bullet {
 
 .swiper-fade .swiper-slide {
   pointer-events: none;
-  transition-property:
+  transition-property: opasity
 }
 
 .swiper-fade .swiper-slide .swiper-slide {

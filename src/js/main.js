@@ -1,7 +1,6 @@
-"use strict";
-import '../assets/scss/swiper-bundle.min.css';
 import '../assets/scss/style.scss';
-import '../index.html';
+import '../assets/scss/swiper-bundle.min.css';
+
 
 
 
