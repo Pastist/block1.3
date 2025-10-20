@@ -1,37 +1,35 @@
-import '../assets/scss/style.scss';
-import '../assets/scss/swiper-bundle.min.css';
 
+//import '../assets/scss/swiper-bundle.min.css';
+import '../assets/scss/style.scss';
+//import '../index.html';
 
 
 
 document.addEventListener("DOMContentLoaded", () => {
   try {
 
-const swiperServicesr = new Swiper('.swiper_services', {
-  slidesPerView: 'auto',
-  spaceBetween: 0,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  }, });
+    const swiperConfig = {
+      slidesPerView: 'auto',
+      spaceBetween: 0,
+      enabled: window.innerWidth <= 768, // Включаем только на экранах уже 768px
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    };
 
-const swiperRepair = new Swiper('.swiper_repair', {
-  slidesPerView: 'auto',
-  spaceBetween: 0,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-});
+    const capServices = new Swiper('.cap_services', swiperConfig);
+    const repairContainer = new Swiper('.repair_container', swiperConfig);
+    const pricesContainer = new Swiper('.prices_container', swiperConfig);
 
-const swiperPrices = new Swiper('.swiper_prices', {
-  slidesPerView: 'auto',
-  spaceBetween: 0,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-});
+    // Обновляем состояние Swiper при изменении размера окна
+    window.addEventListener('resize', function () {
+      const isEnabled = window.innerWidth <= 768;
+
+      [capServices, repairContainer, pricesContainer].forEach(swiper => {
+        swiper.enable(isEnabled);
+      });
+    });
 
 
 const toggleButton = document.getElementById("iconButton");
@@ -59,188 +57,7 @@ toggleButton.addEventListener("click", () => {
 });
 
 
-//// Получаем элементы всех модальных окон
-const feedbackModal = document.querySelector('.feedback_container');
-const callModal = document.querySelector('.call_container');
-const sidebar = document.querySelector('.sidebar');
 
-// Функция закрытия всех модальных окон
-function closeAllModals() {
-  if (feedbackModal) feedbackModal.style.display = 'none';
-  if (callModal) callModal.style.display = 'none';
-
-  // Для sidebar на маленьких экранах
-  if (window.innerWidth < 1119 && sidebar) {
-    sidebar.style.display = 'none';
-    document.body.style.overflow = '';
-    document.body.style.position = '';
-  }
-}
-
-// Функция открытия формы обратной связи
-function openFeedbackModal() {
-  closeAllModals();
-  if (feedbackModal) {
-    feedbackModal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    if (window.innerWidth <= 768) {
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-    }
-  }
-}
-
-// Функция открытия формы заказа звонка
-function openCallModal() {
-  closeAllModals();
-  if (callModal) {
-    callModal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    if (window.innerWidth <= 768) {
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-    }
-  }
-}
-
-// Функция открытия/закрытия sidebar
-function toggleSidebar() {
-  // На разрешении 1119px и больше sidebar всегда видим
-  if (window.innerWidth >= 1119) {
-    return; // Ничего не делаем на больших экранах
-  }
-
-  // На меньших разрешениях работаем как модальное окно
-  if (sidebar.style.display === 'flex' || sidebar.classList.contains('sidebar-container--opened')) {
-    closeSidebar();
-  } else {
-    openSidebar();
-  }
-}
-
-function openSidebar() {
-  if (window.innerWidth < 1119) {
-    closeAllModals();
-    sidebar.style.display = 'flex';
-    sidebar.classList.add('round-button--burger');
-    document.body.style.overflow = 'hidden';
-    if (window.innerWidth <= 768) {
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-    }
-  }
-}
-
-function closeSidebar() {
-  if (window.innerWidth < 1119) {
-    sidebar.style.display = 'none';
-    sidebar.classList.remove('sidebar-container--opened');
-    document.body.style.overflow = '';
-    document.body.style.position = '';
-  }
-}
-
-// Обработка изменения размера окна
-function handleResize() {
-  // Для sidebar на больших разрешениях
-  if (window.innerWidth >= 1119) {
-    sidebar.style.display = 'flex';
-    sidebar.classList.remove('sidebar-container--opened');
-    document.body.style.overflow = '';
-    document.body.style.position = '';
-  } else {
-    // Если на мобильных было открыто модальное окно
-    const anyModalOpen = (feedbackModal && feedbackModal.style.display === 'flex') ||
-      (callModal && callModal.style.display === 'flex') ||
-      (sidebar && (sidebar.style.display === 'flex' || sidebar.classList.contains('sidebar-container--opened')));
-
-    if (anyModalOpen && window.innerWidth <= 768) {
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-    } else if (anyModalOpen) {
-      document.body.style.position = '';
-      document.body.style.width = '';
-    }
-  }
-}
-
-// Инициализация после загрузки DOM
-document.addEventListener('DOMContentLoaded', function () {
-  // Гарантируем, что модальные окна закрыты при загрузке
-  closeAllModals();
-
-  // Для sidebar: на больших разрешениях показываем, на маленьких скрываем
-  if (window.innerWidth >= 1119) {
-    sidebar.style.display = 'flex';
-  } else {
-    sidebar.style.display = 'none';
-  }
-
-  // Кнопки открытия для feedback и call
-  const chatButtons = document.querySelectorAll('.round-button--chat');
-  const callButtons = document.querySelectorAll('.round-button--call');
-
-  // Назначаем обработчики на все кнопки чата
-  chatButtons.forEach(button => {
-    button.addEventListener('click', openFeedbackModal);
-  });
-
-  // Назначаем обработчики на все кнопки звонка
-  callButtons.forEach(button => {
-    button.addEventListener('click', openCallModal);
-  });
-
-  // Кнопка открытия sidebar (бургер)
-  const burgerButton = document.querySelector('.round-button--burger');
-  if (burgerButton) {
-    burgerButton.addEventListener('click', toggleSidebar);
-  }
-
-  // Кнопки закрытия (включая бургер, который может быть кнопкой закрытия в sidebar)
-  const closeButtons = document.querySelectorAll('.round_button--close');
-  closeButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      // Если это кнопка в sidebar, закрываем только sidebar
-      if (this.closest('.sidebar')) {
-        closeSidebar();
-      } else {
-        closeAllModals();
-      }
-    });
-  });
-
-  // Закрытие при клике вне модального окна
-  document.addEventListener('click', function (event) {
-    if (event.target === feedbackModal) {
-      closeAllModals();
-    }
-    if (event.target === callModal) {
-      closeAllModals();
-    }
-    if (event.target === sidebar && window.innerWidth < 1119) {
-      closeSidebar();
-    }
-  });
-
-  // Закрытие по клавише Escape
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-      closeAllModals();
-      closeSidebar();
-    }
-  });
-  
-
-  // Обработчик изменения размера окна
-  window.addEventListener('resize', handleResize);
-});
-
-// Делаем функции глобальными для использования из HTML
-window.openFeedbackModal = openFeedbackModal;
-window.openCallModal = openCallModal;
-window.toggleSidebar = toggleSidebar;
-window.closeAllModals = closeAllModals;
-window.closeSidebar = closeSidebar;
 
 
 

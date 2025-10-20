@@ -12,9 +12,9 @@
   "author": "Iraes",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.17.10",
-    "@babel/preset-env": "^7.17.10",
-    "babel-loader": "^8.2.5",
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "babel-loader": "^8.4.1",
     "copy-webpack-plugin": "^10.2.4",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
@@ -40,6 +40,6 @@
   "dependencies": {
     "focus-visible": "^5.2.0",
     "normalize.css": "^8.0.1",
-    "swiper": "^11.2.8"
+    "swiper": "^12.0.2"
   }
 }

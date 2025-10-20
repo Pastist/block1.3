@@ -274,7 +274,10 @@
    flex-grow: 1;
  }
 
-
+.swiper-container {
+  min-height: 0;
+  min-width: 0;
+}
 
  .cps_image_rigt {
    display: flex;
