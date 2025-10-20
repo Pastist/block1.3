@@ -1,4 +1,4 @@
-
+import "../assets/sidebar/sidebar.scss";
 //import '../assets/scss/swiper-bundle.min.css';
 import '../assets/scss/style.scss';
 //import '../index.html';
@@ -57,7 +57,55 @@ toggleButton.addEventListener("click", () => {
 });
 
 
+    document.addEventListener('DOMContentLoaded', function () {
+      const burgerButton = document.querySelector('.round-button--burger');
+      const closeButton = document.querySelector('.round-button--close');
+      const sidebar = document.querySelector('.sidebar');
+      const overlay = document.createElement('div');
 
+      // Создаем overlay для затемнения
+      overlay.className = 'sidebar-overlay';
+      document.body.appendChild(overlay);
+
+      // Функции управления
+      function openSidebar() {
+        sidebar.classList.add('sidebar--active');
+        overlay.classList.add('sidebar-overlay--active');
+        document.body.style.overflow = 'hidden'; // Блокируем скролл
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('sidebar--active');
+        overlay.classList.remove('sidebar-overlay--active');
+        document.body.style.overflow = ''; // Разблокируем скролл
+      }
+
+      // События
+      if (burgerButton) {
+        burgerButton.addEventListener('click', openSidebar);
+      }
+
+      if (closeButton) {
+        closeButton.addEventListener('click', closeSidebar);
+      }
+
+      // Закрытие по клику на overlay
+      overlay.addEventListener('click', closeSidebar);
+
+      // Закрытие по ESC
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          closeSidebar();
+        }
+      });
+
+      // Автоматическое закрытие при ресайзе на десктоп
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 768) {
+          closeSidebar();
+        }
+      });
+    });
 
 
 

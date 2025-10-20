@@ -1,0 +1,79 @@
+.sidebar {
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+
+  @media (max-width: 767px) {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 1000;
+    overflow-y: auto;
+
+    &.sidebar--active {
+      display: block;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .round_button--close {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .burger {
+    display: none;
+  }
+
+  .round_button--close {
+    display: none;
+  }
+
+  .sidebar {
+    display: block;
+  }
+}
+
+/* На маленьких экранах */
+@media (max-width: 767px) {
+  .sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .sidebar.sidebar--active {
+    display: block;
+  }
+}
+.sidebar {
+  transition: transform 0.3s ease;
+  transform: translateX(-100%);
+}
+
+.sidebar.sidebar--active {
+  transform: translateX(0);
+}
+@media (max-width: 767px) {
+  .sidebar {
+    display: block;
+    /* теперь всегда block, но скрыт за счет transform */
+    transform: translateX(-100%);
+  }
+
+  .sidebar.sidebar--active {
+    transform: translateX(0);
+  }
+}
