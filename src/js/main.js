@@ -1,4 +1,4 @@
-import "../assets/sidebar/sidebar.scss";
+
 //import '../assets/scss/swiper-bundle.min.css';
 import '../assets/scss/style.scss';
 //import '../index.html';
@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
+    
 
 const toggleButton = document.getElementById("iconButton");
 const toggleText = toggleButton.querySelector(".open_icon_text");
@@ -57,291 +58,258 @@ toggleButton.addEventListener("click", () => {
 });
 
 
-    document.addEventListener('DOMContentLoaded', function () {
-      const burgerButton = document.querySelector('.round-button--burger');
-      const closeButton = document.querySelector('.round-button--close');
-      const sidebar = document.querySelector('.sidebar');
-      const overlay = document.createElement('div');
 
-      // Создаем overlay для затемнения
-      overlay.className = 'sidebar-overlay';
-      document.body.appendChild(overlay);
+    // Функция для закрытия всех модальных окон
+    function closeAllModals() {
+      const feedbackModal = document.querySelector('.feedback_container');
+      const callModal = document.querySelector('.call_container');
 
-      // Функции управления
-      function openSidebar() {
-        sidebar.classList.add('sidebar--active');
-        overlay.classList.add('sidebar-overlay--active');
-        document.body.style.overflow = 'hidden'; // Блокируем скролл
+      if (feedbackModal) feedbackModal.classList.remove('feedback_container--opened');
+      if (callModal) callModal.classList.remove('call_container--opened');
+      document.removeEventListener('click', closeModalOnOutsideClick);
+    }
+
+    // Функция для открытия модального окна
+    function openModal(modal) {
+      if (!modal) return;
+
+      // Сначала закрываем все модальные окна
+      closeAllModals();
+
+      // Затем открываем нужное
+      if (modal.classList.contains('feedback_container')) {
+        modal.classList.add('feedback_container--opened');
+      } else if (modal.classList.contains('call_container')) {
+        modal.classList.add('call_container--opened');
       }
 
-      function closeSidebar() {
-        sidebar.classList.remove('sidebar--active');
-        overlay.classList.remove('sidebar-overlay--active');
-        document.body.style.overflow = ''; // Разблокируем скролл
+      // Добавляем обработчик для закрытия при клике вне окна
+      setTimeout(() => {
+        document.addEventListener('click', closeModalOnOutsideClick);
+      }, 0);
+    }
+
+    // Функция для закрытия при клике вне модального окна
+    function closeModalOnOutsideClick(event) {
+      const feedbackModal = document.querySelector('.feedback_container');
+      const callModal = document.querySelector('.call_container');
+
+      const isFeedbackOpen = feedbackModal && feedbackModal.classList.contains('feedback_container--opened');
+      const isCallOpen = callModal && callModal.classList.contains('call_container--opened');
+
+      // Если нет открытых модальных окон, удаляем обработчик
+      if (!isFeedbackOpen && !isCallOpen) {
+        document.removeEventListener('click', closeModalOnOutsideClick);
+        return;
       }
 
-      // События
-      if (burgerButton) {
-        burgerButton.addEventListener('click', openSidebar);
+      // Проверяем, был ли клик вне модального окна
+      const isClickInsideFeedback = feedbackModal && feedbackModal.contains(event.target);
+      const isClickInsideCall = callModal && callModal.contains(event.target);
+
+      // Проверяем, был ли клик по любой кнопке открытия
+      const isClickOnOpenButton = event.target.closest('.button--opened-chat') ||
+        event.target.closest('.button--opened-call');
+
+      // Если клик был не внутри модального окна и не по кнопке открытия, то закрываем все
+      if (!isClickInsideFeedback && !isClickInsideCall && !isClickOnOpenButton) {
+        closeAllModals();
+      }
+    }
+
+    // Закрытие по кнопке Escape
+    function handleEscapeKey(event) {
+      if (event.key === 'Escape') {
+        closeAllModals();
+      }
+    }
+
+    // Делегирование событий для всех кнопок (работает для динамически добавленных элементов)
+    document.addEventListener('click', function (e) {
+      // Обработка кликов по кнопкам открытия чата
+      const chatButton = e.target.closest('.button--opened-chat');
+      if (chatButton) {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal(document.querySelector('.feedback_container'));
       }
 
+      // Обработка кликов по кнопкам открытия звонка
+      const callButton = e.target.closest('.button--opened-call');
+      if (callButton) {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal(document.querySelector('.call_container'));
+      }
+
+      // Обработка кликов по кнопкам закрытия
+      const closeButton = e.target.closest('.round_button--close-form');
       if (closeButton) {
-        closeButton.addEventListener('click', closeSidebar);
+        e.stopPropagation();
+        closeAllModals();
       }
-
-      // Закрытие по клику на overlay
-      overlay.addEventListener('click', closeSidebar);
-
-      // Закрытие по ESC
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-          closeSidebar();
-        }
-      });
-
-      // Автоматическое закрытие при ресайзе на десктоп
-      window.addEventListener('resize', function () {
-        if (window.innerWidth >= 768) {
-          closeSidebar();
-        }
-      });
     });
 
+    // Инициализируем при загрузке
+    document.addEventListener('DOMContentLoaded', function () {
+      // Обработчики отправки форм
+      const feedbackForm = document.querySelector('.feedback_form');
+      const callForm = document.querySelector('.call_form');
 
+      if (feedbackForm) {
+        feedbackForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          console.log('Форма обратной связи отправлена');
+          closeAllModals();
+        });
+      }
 
-//// Получаем элементы всех модальных окон
-//const feedbackModal = document.querySelector('.feedback_container');
-//const callModal = document.querySelector('.call_container');
-//const sidebar = document.querySelector('.sidebar');
+      if (callForm) {
+        callForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          console.log('Форма звонка отправлена');
+          closeAllModals();
+        });
+      }
 
-//// Функция закрытия всех модальных окон
+      // Валидация номера телефона (только цифры)
+      const phoneInput = document.querySelector('.call_form__phone-input');
+      if (phoneInput) {
+        phoneInput.addEventListener('input', function (e) {
+          this.value = this.value.replace(/[^\d]/g, '');
+        });
+      }
+
+      // Добавляем обработчик Escape
+      document.addEventListener('keydown', handleEscapeKey);
+
+      // Предотвращаем закрытие при клике внутри модального окна
+      document.querySelectorAll('modal').forEach(modal => {
+        modal.addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+      });
+
+      console.log('Модальные окна инициализированы');
+      console.log('Найдено кнопок чата:', document.querySelectorAll('.button--opened-chat').length);
+      console.log('Найдено кнопок звонка:', document.querySelectorAll('.button--opened-call').length);
+    });
+    
+//// Функция для закрытия всех модальных окон
 //function closeAllModals() {
-//  if (feedbackModal) {
-//    feedbackModal.style.display = 'none';
-//    feedbackModal.classList.remove('modal--open');
-//  }
-//  if (callModal) {
-//    callModal.style.display = 'none';
-//    callModal.classList.remove('modal--open');
-//  }
-
-//  // Для sidebar на маленьких экранах
-//  if (window.innerWidth < 1119 && sidebar) {
-//    sidebar.classList.remove('sidebar_conteiner--open');
-//    document.body.style.overflow = '';
-//    document.body.style.position = '';
-//  }
-
-//  // Убираем overlay если есть
-//  const overlay = document.querySelector('.modal-overlay');
-//  if (overlay) {
-//    overlay.remove();
-//  }
+//    const feedbackModal = document.querySelector('.feedback_container');
+//    const callModal = document.querySelector('.call_container');
+    
+//    feedbackModal.classList.remove('feedback_container--opened');
+//    callModal.classList.remove('call_container--opened');
+//    document.removeEventListener('click', closeModalOnOutsideClick);
 //}
 
-//// Функция открытия формы обратной связи
-//function openFeedbackModal() {
-//  closeAllModals();
-//  if (feedbackModal) {
-//    feedbackModal.style.display = 'flex';
-//    feedbackModal.classList.add('modal--open');
-//    document.body.style.overflow = 'hidden';
-//    if (window.innerWidth <= 768) {
-//      document.body.style.position = 'fixed';
-//      document.body.style.width = '100%';
+//// Функция для открытия модального окна
+//function openModal(modal) {
+//    // Сначала закрываем все модальные окна
+//    closeAllModals();
+    
+//    // Затем открываем нужное
+//    if (modal.classList.contains('feedback_container')) {
+//        modal.classList.add('feedback_container--opened');
+//    } else if (modal.classList.contains('call_container')) {
+//        modal.classList.add('call_container--opened');
 //    }
-//    createOverlay();
-//  }
+    
+//    // Добавляем обработчик для закрытия при клике вне окна
+//    setTimeout(() => {
+//        document.addEventListener('click', closeModalOnOutsideClick);
+//    }, 0);
 //}
 
-//// Функция открытия формы заказа звонка
-//function openCallModal() {
-//  closeAllModals();
-//  if (callModal) {
-//    callModal.style.display = 'flex';
-//    callModal.classList.add('modal--open');
-//    document.body.style.overflow = 'hidden';
-//    if (window.innerWidth <= 768) {
-//      document.body.style.position = 'fixed';
-//      document.body.style.width = '100%';
+//// Функция для закрытия при клике вне модального окна
+//function closeModalOnOutsideClick(event) {
+//    const feedbackModal = document.querySelector('.feedback_container');
+//    const callModal = document.querySelector('.call_container');
+    
+//    const isFeedbackOpen = feedbackModal.classList.contains('feedback_container--opened');
+//    const isCallOpen = callModal.classList.contains('call_container--opened');
+    
+//    // Если нет открытых модальных окон, удаляем обработчик
+//    if (!isFeedbackOpen && !isCallOpen) {
+//        document.removeEventListener('click', closeModalOnOutsideClick);
+//        return;
 //    }
-//    createOverlay();
-//  }
-//}
-
-//// Функция открытия sidebar
-//function openSidebar() {
-//  // На разрешении 1119px и больше sidebar всегда видим
-//  if (window.innerWidth >= 1119) {
-//    return; // Ничего не делаем на больших экранах
-//  }
-
-//  // На меньших разрешениях работаем как модальное окно
-//  closeAllModals();
-//  sidebar.classList.add('sidebar_container--open');
-//  document.body.style.overflow = 'hidden';
-//  if (window.innerWidth <= 768) {
-//    document.body.style.position = 'fixed';
-//    document.body.style.width = '100%';
-//  }
-//  createOverlay();
-//}
-
-//// Функция создания overlay для закрытия по клику вне окна
-//function createOverlay() {
-//  // Удаляем существующий overlay
-//  const existingOverlay = document.querySelector('.modal-overlay');
-//  if (existingOverlay) {
-//    existingOverlay.remove();
-//  }
-
-//  // Создаем новый overlay
-//  const overlay = document.createElement('div');
-//  overlay.className = 'modal-overlay';
-//  overlay.style.cssText = `
-//        position: fixed;
-//        top: 0;
-//        left: 0;
-//        width: 100%;
-//        height: 100%;
-//        background: transparent;
-//        z-index: 999;
-//        cursor: default;
-//    `;
-
-//  overlay.addEventListener('click', closeAllModals);
-//  document.body.appendChild(overlay);
-//}
-
-//// Обработка изменения размера окна
-//function handleResize() {
-//  // Для sidebar на больших разрешениях
-//  if (window.innerWidth >= 1119) {
-//    sidebar.classList.remove('sidebar--open');
-//    document.body.style.overflow = '';
-//    document.body.style.position = '';
-
-//    // Убираем overlay на больших экранах
-//    const overlay = document.querySelector('.modal-overlay');
-//    if (overlay) {
-//      overlay.remove();
+    
+//    // Проверяем, был ли клик вне модального окна
+//    const isClickInsideFeedback = feedbackModal.contains(event.target);
+//    const isClickInsideCall = callModal.contains(event.target);
+//    const isClickOnOpenButton = event.target.closest('.button--opened-chat') || 
+//                               event.target.closest('.button--opened-call');
+    
+//    // Если клик был не внутри модального окна и не по кнопке открытия, то закрываем все
+//    if (!isClickInsideFeedback && !isClickInsideCall && !isClickOnOpenButton) {
+//        closeAllModals();
 //    }
-//  } else {
-//    // Если уменьшили экран и sidebar был открыт - закрываем его
-//    if (sidebar.classList.contains('sidebar_container--open')) {
-//      closeAllModals();
-//    }
-
-//    // Если на мобильных было открыто модальное окно
-//    const anyModalOpen = (feedbackModal && feedbackModal.classList.contains('modal--open')) ||
-//      (callModal && callModal.classList.contains('modal--open')) ||
-//      (sidebar && sidebar.classList.contains('sidebar--open'));
-
-//    if (anyModalOpen && window.innerWidth <= 768) {
-//      document.body.style.position = 'fixed';
-//      document.body.style.width = '100%';
-//    } else if (anyModalOpen) {
-//      document.body.style.position = '';
-//      document.body.style.width = '';
-//    }
-//  }
 //}
 
-//// Инициализация после загрузки DOM
-//document.addEventListener('DOMContentLoaded', function () {
-//  // Гарантируем, что модальные окна закрыты при загрузке
-//  closeAllModals();
-
-//  // Для sidebar: на больших разрешениях показываем, на маленьких скрываем
-//  if (window.innerWidth >= 1119) {
-//    sidebar.style.display = 'flex';
-//  } else {
-//    sidebar.style.display = 'none';
-//  }
-
-//  // Кнопки открытия для feedback и call
-//  const chatButtons = document.querySelectorAll('.round-button--chat');
-//  const callButtons = document.querySelectorAll('.round-button--call');
-
-//  // Назначаем обработчики на все кнопки чата
-//  chatButtons.forEach(button => {
-//    button.addEventListener('click', openFeedbackModal);
-//  });
-
-//  // Назначаем обработчики на все кнопки звонка
-//  callButtons.forEach(button => {
-//    button.addEventListener('click', openCallModal);
-//  });
-
-//  // Кнопка открытия sidebar (бургер)
-//  const burgerButton = document.querySelector('.round-button--burger');
-//  if (burgerButton) {
-//    burgerButton.addEventListener('click', openSidebar);
-//  }
-
-//  // Кнопки закрытия в модальных окнах форм
-//  const closeButtons = document.querySelectorAll('.round-button--close-menu');
-//  closeButtons.forEach(button => {
-//    button.addEventListener('click', closeAllModals);
-//  });
-
-//  // Кнопка закрытия в sidebar (бургер с классом round-button--close)
-//  const sidebarCloseButtons = document.querySelectorAll('.sidebar .round-button--close');
-//  sidebarCloseButtons.forEach(button => {
-//    button.addEventListener('click', closeAllModals);
-//  });
-
-//  // Закрытие по клавише Escape
-//  document.addEventListener('keydown', function (event) {
+//// Закрытие по кнопке Escape
+//function handleEscapeKey(event) {
 //    if (event.key === 'Escape') {
-//      closeAllModals();
+//        closeAllModals();
 //    }
-//  });
+//}
 
-//  // Обработка отправки форм
-//  const feedbackForm = document.querySelector('.feedback_form');
-//  const callForm = document.querySelector('.call_form');
-
-//  if (feedbackForm) {
-//    feedbackForm.addEventListener('submit', function (event) {
-//      event.preventDefault();
-//      console.log('Форма обратной связи отправлена');
-//      closeAllModals();
-//    });
-//  }
-
-//  if (callForm) {
-//    callForm.addEventListener('submit', function (event) {
-//      event.preventDefault();
-//      console.log('Форма заказа звонка отправлена');
-//      closeAllModals();
-//    });
-//  }
-
-//  // Обработка кликов на кнопки отправки (так как они div, а не button)
-//  const submitButtons = document.querySelectorAll('.red_button--form');
-//  submitButtons.forEach(button => {
-//    button.addEventListener('click', function () {
-//      const form = this.closest('form');
-//      if (form) {
-//        if (form.checkValidity()) {
-//          form.dispatchEvent(new Event('submit', { bubbles: true }));
-//        } else {
-//          form.reportValidity();
-//        }
-//      }
-//    });
-//  });
-
-//  // Обработчик изменения размера окна
-//  window.addEventListener('resize', handleResize);
+//// Обработчики для кнопок открытия
+//document.querySelector('.button--opened-chat').addEventListener('click', function(e) {
+//    e.preventDefault();
+//    e.stopPropagation();
+//    openModal(document.querySelector('.feedback_container'));
 //});
 
-//// Делаем функции глобальными для использования из HTML
-//window.openFeedbackModal = openFeedbackModal;
-//window.openCallModal = openCallModal;
-//window.openSidebar = openSidebar;
-//window.closeAllModals = closeAllModals;
+//document.querySelector('.button--opened-call').addEventListener('click', function(e) {
+//    e.preventDefault();
+//    e.stopPropagation();
+//    openModal(document.querySelector('.call_container'));
+//});
+
+//// Обработчики для кнопок закрытия
+//document.querySelectorAll('.round_button--close-form').forEach(button => {
+//    button.addEventListener('click', function(e) {
+//        e.stopPropagation();
+//        closeAllModals();
+//    });
+//});
+
+//// Обработчики отправки форм
+//document.querySelector('.feedback_form').addEventListener('submit', function(e) {
+//    e.preventDefault();
+//    // Здесь можно добавить обработку данных формы
+//    console.log('Форма обратной связи отправлена');
+//    closeAllModals();
+//});
+
+//document.querySelector('.call_form').addEventListener('submit', function(e) {
+//    e.preventDefault();
+//    // Здесь можно добавить обработку данных формы
+//    console.log('Форма звонка отправлена');
+//    closeAllModals();
+//});
+
+//// Валидация номера телефона (только цифры)
+//document.querySelector('.call_form__phone-input').addEventListener('input', function(e) {
+//    this.value = this.value.replace(/[^\d]/g, '');
+//});
+
+//// Добавляем обработчик Escape
+//document.addEventListener('keydown', handleEscapeKey);
+
+//// Предотвращаем закрытие при клике внутри модального окна
+//document.querySelectorAll('modal').forEach(modal => {
+//    modal.addEventListener('click', function(e) {
+//        e.stopPropagation();
+//    });
+//});
+
+
+
+
 
   } catch (error) {
     console.error("Error initializing components:", error);
