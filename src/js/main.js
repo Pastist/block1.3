@@ -63,9 +63,12 @@ toggleButton.addEventListener("click", () => {
     function closeAllModals() {
       const feedbackModal = document.querySelector('.feedback_container');
       const callModal = document.querySelector('.call_container');
+      const sidebarModal = document.querySelector('.sidebar_container');
 
       if (feedbackModal) feedbackModal.classList.remove('feedback_container--opened');
       if (callModal) callModal.classList.remove('call_container--opened');
+      if (sidebarModal) sidebarModal.classList.remove('sidebar_container--opened');
+
       document.removeEventListener('click', closeModalOnOutsideClick);
     }
 
@@ -81,6 +84,8 @@ toggleButton.addEventListener("click", () => {
         modal.classList.add('feedback_container--opened');
       } else if (modal.classList.contains('call_container')) {
         modal.classList.add('call_container--opened');
+      } else if (modal.classList.contains('sidebar_container')) {
+        modal.classList.add('sidebar_container--opened');
       }
 
       // Добавляем обработчик для закрытия при клике вне окна
@@ -93,12 +98,14 @@ toggleButton.addEventListener("click", () => {
     function closeModalOnOutsideClick(event) {
       const feedbackModal = document.querySelector('.feedback_container');
       const callModal = document.querySelector('.call_container');
+      const sidebarModal = document.querySelector('.sidebar_container');
 
       const isFeedbackOpen = feedbackModal && feedbackModal.classList.contains('feedback_container--opened');
       const isCallOpen = callModal && callModal.classList.contains('call_container--opened');
+      const isSidebarOpen = sidebarModal && sidebarModal.classList.contains('sidebar_container--opened');
 
       // Если нет открытых модальных окон, удаляем обработчик
-      if (!isFeedbackOpen && !isCallOpen) {
+      if (!isFeedbackOpen && !isCallOpen && !isSidebarOpen) {
         document.removeEventListener('click', closeModalOnOutsideClick);
         return;
       }
@@ -106,13 +113,15 @@ toggleButton.addEventListener("click", () => {
       // Проверяем, был ли клик вне модального окна
       const isClickInsideFeedback = feedbackModal && feedbackModal.contains(event.target);
       const isClickInsideCall = callModal && callModal.contains(event.target);
+      const isClickInsideSidebar = sidebarModal && sidebarModal.contains(event.target);
 
       // Проверяем, был ли клик по любой кнопке открытия
       const isClickOnOpenButton = event.target.closest('.button--opened-chat') ||
-        event.target.closest('.button--opened-call');
+        event.target.closest('.button--opened-call') ||
+        event.target.closest('.burger');
 
       // Если клик был не внутри модального окна и не по кнопке открытия, то закрываем все
-      if (!isClickInsideFeedback && !isClickInsideCall && !isClickOnOpenButton) {
+      if (!isClickInsideFeedback && !isClickInsideCall && !isClickInsideSidebar && !isClickOnOpenButton) {
         closeAllModals();
       }
     }
@@ -142,9 +151,27 @@ toggleButton.addEventListener("click", () => {
         openModal(document.querySelector('.call_container'));
       }
 
+      // Обработка кликов по кнопке бургер
+      const burgerButton = e.target.closest('.burger');
+      if (burgerButton) {
+        e.preventDefault();
+        e.stopPropagation();
+        // Открываем сайдбар только на маленьких экранах
+        if (window.innerWidth < 1119) {
+          openModal(document.querySelector('.sidebar_container'));
+        }
+      }
+
       // Обработка кликов по кнопкам закрытия
       const closeButton = e.target.closest('.round_button--close-form');
       if (closeButton) {
+        e.stopPropagation();
+        closeAllModals();
+      }
+
+      // Обработка кликов по кнопке закрытия сайдбара
+      const sidebarCloseButton = e.target.closest('.close_menu');
+      if (sidebarCloseButton) {
         e.stopPropagation();
         closeAllModals();
       }
@@ -184,16 +211,53 @@ toggleButton.addEventListener("click", () => {
       document.addEventListener('keydown', handleEscapeKey);
 
       // Предотвращаем закрытие при клике внутри модального окна
-      document.querySelectorAll('modal').forEach(modal => {
+      document.querySelectorAll('.modal').forEach(modal => {
         modal.addEventListener('click', function (e) {
           e.stopPropagation();
         });
       });
 
+      // Инициализация сайдбара на больших экранах
+      function initSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        if (window.innerWidth >= 1119) {
+          sidebar.style.display = 'block';
+        } else {
+          sidebar.style.display = 'none';
+        }
+      }
+
+      initSidebar();
+
+      // Обработчик изменения размера окна для сайдбара
+      window.addEventListener('resize', function () {
+        const sidebar = document.querySelector('.sidebar');
+        const sidebarContainer = document.querySelector('.sidebar_container');
+
+        if (window.innerWidth >= 1119) {
+          // На больших экранах сайдбар всегда виден
+          sidebar.style.display = 'block';
+          // Закрываем сайдбар если он открыт как модальное окно
+          if (sidebarContainer.classList.contains('sidebar_container--opened')) {
+            closeAllModals();
+          }
+        } else {
+          // На маленьких экранах скрываем сайдбар если он не открыт
+          if (!sidebarContainer.classList.contains('sidebar_container--opened')) {
+            sidebar.style.display = 'none';
+          }
+        }
+      });
+
       console.log('Модальные окна инициализированы');
       console.log('Найдено кнопок чата:', document.querySelectorAll('.button--opened-chat').length);
       console.log('Найдено кнопок звонка:', document.querySelectorAll('.button--opened-call').length);
+      console.log('Найдено кнопок бургер:', document.querySelectorAll('.burger').length);
     });
+
+
+
+
     
 //// Функция для закрытия всех модальных окон
 //function closeAllModals() {
