@@ -1,2 +1,0 @@
-﻿https://pastist.github.io/block1.3/
-
