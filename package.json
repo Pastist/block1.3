@@ -6,7 +6,9 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "dev": "cross-env NODE_ENV=development webpack --mode development",
-    "start": "cross-env NODE_ENV=development webpack serve --mode development"
+    "start": "cross-env NODE_ENV=development webpack serve --mode development",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "Iraes",
@@ -41,5 +43,6 @@
     "focus-visible": "^5.2.0",
     "normalize.css": "^8.0.1",
     "swiper": "^12.0.2"
-  }
+  },
+  "homepage": "https://pastist.github.io/block1.3/"
 }
