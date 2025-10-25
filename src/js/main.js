@@ -84,57 +84,77 @@ document.addEventListener("DOMContentLoaded", () => {
 
     
 
-const toggleButton = document.getElementById("iconButton");
-const toggleText = toggleButton.querySelector(".open_icon_text");
-const mainImg = document.querySelector(".open_img");
-const slideToggle = document.querySelectorAll(".brands_services");
-let isExpanded = false;
+    const toggleButton = document.getElementById("iconButton");
+    const toggleText = toggleButton.querySelector(".open_icon_text");
+    const mainImg = document.querySelector(".open_img");
+    const slideToggle = document.querySelectorAll(".brands_services");
+    let isExpanded = false;
 
-// Функция для применения закрытого состояния
-function applyClosedState() {
-  slideToggle.forEach((item, index) => {
-    if (window.innerWidth >= 1010) {
-      if (index >= 8) item.classList.add("hidden");
-    } else if (window.innerWidth >= 766) {
-      if (index >= 6) item.classList.add("hidden");
+    // Функция для скрытия лишних элементов
+    function hideExtraElements() {
+      slideToggle.forEach((item, index) => {
+        if (window.innerWidth >= 1010) {
+          // Для десктопа оставляем первые 8 элементов
+          if (index >= 8) {
+            item.classList.add("hidden");
+          } else {
+            item.classList.remove("hidden");
+          }
+        } else if (window.innerWidth >= 766) {
+          // Для планшетов оставляем первые 6 элементов
+          if (index >= 6) {
+            item.classList.add("hidden");
+          } else {
+            item.classList.remove("hidden");
+          }
+        } else {
+          // Для мобильных оставляем первые 4 элемента
+          if (index >= 12) {
+            item.classList.add("hidden");
+          } else {
+            item.classList.remove("hidden");
+          }
+        }
+      });
     }
-     else {
-      // Для мобильных устройств (меньше 766px)
-      if (index >= 12
-      ) item.classList.add("hidden");
+
+    // Инициализация при загрузке страницы
+    function init() {
+      hideExtraElements();
+      toggleText.textContent = "Показать всё";
+      mainImg.classList.remove("rotated");
+      isExpanded = false;
     }
-  });
-  toggleText.textContent = "Показать всё";
-  mainImg.classList.remove("rotated");
-}
 
-// Функция для применения открытого состояния
-function applyOpenState() {
-  slideToggle.forEach(item => item.classList.remove("hidden"));
-  toggleText.textContent = "Скрыть";
-  mainImg.classList.add("rotated");
-}
+    // Запускаем инициализацию когда DOM готов
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
 
-// Инициализация при загрузке - устанавливаем закрытое состояние
-applyClosedState();
+    // Обработчик клика
+    toggleButton.addEventListener("click", () => {
+      if (isExpanded) {
+        // Скрываем лишние элементы
+        hideExtraElements();
+        toggleText.textContent = "Показать всё";
+        mainImg.classList.remove("rotated");
+      } else {
+        // Показываем все элементы
+        slideToggle.forEach(item => item.classList.remove("hidden"));
+        toggleText.textContent = "Скрыть";
+        mainImg.classList.add("rotated");
+      }
+      isExpanded = !isExpanded;
+    });
 
-// Обработчик клика
-toggleButton.addEventListener("click", () => {
-  if (isExpanded) {
-    applyClosedState();
-  } else {
-    applyOpenState();
-  }
-  isExpanded = !isExpanded;
-});
-
-// Обработчик изменения размера окна
-window.addEventListener("resize", () => {
-  if (!isExpanded) {
-    // Если состояние закрытое, обновляем скрытие элементов
-    applyClosedState();
-  }
-});
+    // Обработчик изменения размера окна
+    window.addEventListener('resize', function () {
+      if (!isExpanded) {
+        hideExtraElements();
+      }
+    });
 
 
 
