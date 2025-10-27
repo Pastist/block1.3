@@ -4,7 +4,7 @@ import '../assets/scss/style.scss'
 //import '../index.html';
 
 
-
+  // свайпер
 document.addEventListener("DOMContentLoaded", () => {
   try {
 
@@ -72,11 +72,12 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(manageSwipers, 100);
+      
     });
 
 
 
-
+  //кнопка добавления контекста
     {
       const toggleButton = document.querySelector(".content_button");
       const hiddenText = document.querySelector(".text_second");
@@ -90,18 +91,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const width = window.innerWidth;
 
         if (width < 768) {
-          // Мобильные: только text_first по умолчанию, при открытии - text_second
           hiddenText.style.display = expanded ? "block" : "none";
-          thirdText.style.display = "none"; // text_third всегда скрыт на мобильных
+          thirdText.style.display = "none";
           hiddenText.style.overflow = "";
           hiddenText.style.webkitLineClamp = "";
           hiddenText.style.webkitBoxOrient = "";
         } else if (width < 1119) {
-          // Планшеты: работает как в исходном коде
           hiddenText.style.display = "-webkit-box";
           hiddenText.style.overflow = expanded ? "visible" : "hidden";
           hiddenText.style.webkitBoxOrient = "vertical";
-          thirdText.style.display = "none"; // text_third скрыт на планшетах
+          thirdText.style.display = "none";
 
           if (width >= 1119) {
             hiddenText.style.webkitLineClamp = expanded ? "unset" : "1";
@@ -109,13 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
             hiddenText.style.webkitLineClamp = expanded ? "unset" : "2";
           }
         } else {
-          // Десктоп: text_first и text_second видны, text_third скрыт по умолчанию
           hiddenText.style.display = "-webkit-box";
           hiddenText.style.overflow = expanded ? "visible" : "hidden";
           hiddenText.style.webkitBoxOrient = "vertical";
           hiddenText.style.webkitLineClamp = expanded ? "unset" : "1";
 
-          // text_third показывается только при expanded = true
           thirdText.style.display = expanded ? "block" : "none";
         }
 
@@ -140,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
+  //кнопки скрытия лишних элементов брендов
     const toggleButton = document.getElementById("iconButton");
     const toggleButtonRepair = document.getElementById("iconButtonRepair");
     const toggleText = toggleButton.querySelector(".open_icon_text");
@@ -148,12 +145,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainImg = document.querySelector(".open_img");
     const mainImgRepair = document.querySelector(".open_img_repair");
     const slideToggle = document.querySelectorAll(".brands_services");
-    const slideToggleRepair = document.querySelectorAll(".repair_services"); // предположительный класс для элементов ремонта
+    const slideToggleRepair = document.querySelectorAll(".repair_services");
 
     let isExpanded = false;
     let isExpandedRepair = false;
 
-    // Функция для скрытия лишних элементов брендов
     function hideExtraElements() {
       slideToggle.forEach((item, index) => {
         if (window.innerWidth >= 1010) {
@@ -178,7 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Функция для скрытия лишних элементов ремонта
     function hideExtraElementsRepair() {
       if (!slideToggleRepair.length) return;
 
@@ -205,7 +200,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Инициализация при загрузке страницы
     function init() {
       hideExtraElements();
       hideExtraElementsRepair();
@@ -228,14 +222,13 @@ document.addEventListener("DOMContentLoaded", () => {
       isExpandedRepair = false;
     }
 
-    // Запускаем инициализацию когда DOM готов
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', init);
     } else {
       init();
     }
 
-    // Обработчик клика для первой кнопки (бренды)
+    //бренды
     if (toggleButton) {
       toggleButton.addEventListener("click", () => {
         if (isExpanded) {
@@ -259,7 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Обработчик клика для второй кнопки (ремонт)
+    //ремонт
     if (toggleButtonRepair) {
       toggleButtonRepair.addEventListener("click", () => {
         if (isExpandedRepair) {
@@ -283,7 +276,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Обработчик изменения размера окна
     window.addEventListener('resize', function () {
       if (!isExpanded) {
         hideExtraElements();
@@ -296,7 +288,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     
 
-    // Функция для создания overlay
+    // модалки
     function createOverlay() {
       const overlay = document.createElement('div');
       overlay.className = 'modal-overlay';
@@ -312,12 +304,10 @@ document.addEventListener("DOMContentLoaded", () => {
     transition: opacity 0.3s ease;
   `;
 
-      // Закрытие по клику на overlay
       overlay.addEventListener('click', closeAllModals);
 
       document.body.appendChild(overlay);
 
-      // Анимация появления
       setTimeout(() => {
         overlay.style.opacity = '1';
       }, 10);
@@ -325,7 +315,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return overlay;
     }
 
-    // Функция для удаления overlay
     function removeOverlay() {
       const overlay = document.querySelector('.modal-overlay');
       if (overlay) {
@@ -542,124 +531,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log('Найдено кнопок звонка:', document.querySelectorAll('.button--opened-call').length);
       console.log('Найдено кнопок бургер:', document.querySelectorAll('.burger').length);
     });
-
-
-
-
-    
-//// Функция для закрытия всех модальных окон
-//function closeAllModals() {
-//    const feedbackModal = document.querySelector('.feedback_container');
-//    const callModal = document.querySelector('.call_container');
-    
-//    feedbackModal.classList.remove('feedback_container--opened');
-//    callModal.classList.remove('call_container--opened');
-//    document.removeEventListener('click', closeModalOnOutsideClick);
-//}
-
-//// Функция для открытия модального окна
-//function openModal(modal) {
-//    // Сначала закрываем все модальные окна
-//    closeAllModals();
-    
-//    // Затем открываем нужное
-//    if (modal.classList.contains('feedback_container')) {
-//        modal.classList.add('feedback_container--opened');
-//    } else if (modal.classList.contains('call_container')) {
-//        modal.classList.add('call_container--opened');
-//    }
-    
-//    // Добавляем обработчик для закрытия при клике вне окна
-//    setTimeout(() => {
-//        document.addEventListener('click', closeModalOnOutsideClick);
-//    }, 0);
-//}
-
-//// Функция для закрытия при клике вне модального окна
-//function closeModalOnOutsideClick(event) {
-//    const feedbackModal = document.querySelector('.feedback_container');
-//    const callModal = document.querySelector('.call_container');
-    
-//    const isFeedbackOpen = feedbackModal.classList.contains('feedback_container--opened');
-//    const isCallOpen = callModal.classList.contains('call_container--opened');
-    
-//    // Если нет открытых модальных окон, удаляем обработчик
-//    if (!isFeedbackOpen && !isCallOpen) {
-//        document.removeEventListener('click', closeModalOnOutsideClick);
-//        return;
-//    }
-    
-//    // Проверяем, был ли клик вне модального окна
-//    const isClickInsideFeedback = feedbackModal.contains(event.target);
-//    const isClickInsideCall = callModal.contains(event.target);
-//    const isClickOnOpenButton = event.target.closest('.button--opened-chat') || 
-//                               event.target.closest('.button--opened-call');
-    
-//    // Если клик был не внутри модального окна и не по кнопке открытия, то закрываем все
-//    if (!isClickInsideFeedback && !isClickInsideCall && !isClickOnOpenButton) {
-//        closeAllModals();
-//    }
-//}
-
-//// Закрытие по кнопке Escape
-//function handleEscapeKey(event) {
-//    if (event.key === 'Escape') {
-//        closeAllModals();
-//    }
-//}
-
-//// Обработчики для кнопок открытия
-//document.querySelector('.button--opened-chat').addEventListener('click', function(e) {
-//    e.preventDefault();
-//    e.stopPropagation();
-//    openModal(document.querySelector('.feedback_container'));
-//});
-
-//document.querySelector('.button--opened-call').addEventListener('click', function(e) {
-//    e.preventDefault();
-//    e.stopPropagation();
-//    openModal(document.querySelector('.call_container'));
-//});
-
-//// Обработчики для кнопок закрытия
-//document.querySelectorAll('.round_button--close-form').forEach(button => {
-//    button.addEventListener('click', function(e) {
-//        e.stopPropagation();
-//        closeAllModals();
-//    });
-//});
-
-//// Обработчики отправки форм
-//document.querySelector('.feedback_form').addEventListener('submit', function(e) {
-//    e.preventDefault();
-//    // Здесь можно добавить обработку данных формы
-//    console.log('Форма обратной связи отправлена');
-//    closeAllModals();
-//});
-
-//document.querySelector('.call_form').addEventListener('submit', function(e) {
-//    e.preventDefault();
-//    // Здесь можно добавить обработку данных формы
-//    console.log('Форма звонка отправлена');
-//    closeAllModals();
-//});
-
-//// Валидация номера телефона (только цифры)
-//document.querySelector('.call_form__phone-input').addEventListener('input', function(e) {
-//    this.value = this.value.replace(/[^\d]/g, '');
-//});
-
-//// Добавляем обработчик Escape
-//document.addEventListener('keydown', handleEscapeKey);
-
-//// Предотвращаем закрытие при клике внутри модального окна
-//document.querySelectorAll('modal').forEach(modal => {
-//    modal.addEventListener('click', function(e) {
-//        e.stopPropagation();
-//    });
-//});
-
-
 
 
 
