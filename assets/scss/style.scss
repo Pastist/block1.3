@@ -77,7 +77,7 @@
 
 .ewer {
   display: grid;
-  grid-template-columns: 320px 1121px;
+  grid-template-columns: 320px auto;
   grid-column: 1;
   grid-row-end: 3;
 }
@@ -368,7 +368,7 @@
 
 .slidemenu {
   display: flex;
-  overflow: auto;
+  overflow-y: auto;
   align-items: center;
   list-style-type: none;
   white-space: nowrap;
@@ -1471,8 +1471,8 @@
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start, center;
-    /*width: 1063px;*/
-    height: 82px;
+    //width: 1063px;
+    //height: 82px;
     padding: 0 0 0 35px;
     margin: 0;
   }
