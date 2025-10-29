@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
       init();
     }
 
-    //бренды
+    //бренды кнопка показать
     if (toggleButton) {
       toggleButton.addEventListener("click", () => {
         if (isExpanded) {
@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    //ремонт
+    //ремонт кнопка показать
     if (toggleButtonRepair) {
       toggleButtonRepair.addEventListener("click", () => {
         if (isExpandedRepair) {

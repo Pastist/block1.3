@@ -70,15 +70,14 @@
 .body {
   font-family: 'TT Lakes', sans-serif;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   height: auto;
-  min-width: 100vw;
   /*overflow: hidden;*/
 }
 
 .ewer {
   display: grid;
-  grid-template-columns: 320px 1121px;
+  grid-template-columns: 320px auto;
   grid-column: 1;
   grid-row-end: 3;
 }
@@ -369,7 +368,7 @@
 
 .slidemenu {
   display: flex;
-  overflow: auto;
+  overflow-y: auto;
   align-items: center;
   list-style-type: none;
   white-space: nowrap;
@@ -1290,7 +1289,7 @@
   .body {
     font-family: 'TT Lakes', sans-serif;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     height: 504px;
   }
 
@@ -1472,8 +1471,8 @@
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start, center;
-    /*width: 1063px;*/
-    height: 82px;
+    //width: 1063px;
+    //height: 82px;
     padding: 0 0 0 35px;
     margin: 0;
   }
